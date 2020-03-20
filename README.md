@@ -14,4 +14,4 @@
 
 ![Active VPN Tunnels][active_vpn_tunnels]
 
-[active_vpn_tunnels]: ./static/active_vpn_tunnels.png "Active VPN Tunnels"
+[active_vpn_tunnels]: /static/active_vpn_tunnels.png "Active VPN Tunnels"
