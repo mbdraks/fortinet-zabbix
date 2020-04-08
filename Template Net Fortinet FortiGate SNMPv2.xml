@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2020-04-08T14:50:25Z</date>
+    <groups>
+        <group>
+            <name>Templates/Network devices</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Net Fortinet FortiGate SNMPv2</template>
+            <name>Template Net Fortinet FortiGate SNMPv2</name>
+            <description>Zabbix Template for Fortinet FortiGate&#13;
+URL: https://github.com/barbosm/fortinet-zabbix&#13;
+Author: Michel Barbosa&#13;
+Version: 1.0&#13;
+&#13;
+Exposes information obtained from the following MIBs (import is not required):&#13;
+- FORTINET-CORE-MIB&#13;
+- FORTINET-FORTIGATE-MIB</description>
+            <templates>
+                <template>
+                    <name>Template Module EtherLike-MIB SNMPv2</name>
+                </template>
+                <template>
+                    <name>Template Module Generic SNMPv2</name>
+                </template>
+                <template>
+                    <name>Template Module Interfaces SNMPv2</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Templates/Network devices</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>CPU</name>
+                </application>
+                <application>
+                    <name>Inventory</name>
+                </application>
+                <application>
+                    <name>Memory</name>
+                </application>
+                <application>
+                    <name>Session</name>
+                </application>
+                <application>
+                    <name>VPN</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Logical Description</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.47.1.2.1.1.2.1</snmp_oid>
+                    <key>entLogicalDescr</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>ENTITY-MIB::entLogicalDescr&#13;
+&#13;
+A textual description of the logical entity.  This object&#13;
+should contain a string which identifies the manufacturer's&#13;
+name for the logical entity, and should be set to a distinct&#13;
+value for each version of the logical entity.</description>
+                    <inventory_link>SOFTWARE_FULL</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Physical Description</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.2.1.47.1.1.1.1.2.1</snmp_oid>
+                    <key>entPhysicalDesc</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>ENTITY-MIB::entPhysicalDescr&#13;
+&#13;
+A textual description of physical entity.  This object&#13;
+should contain a string which identifies the manufacturer's&#13;
+name for the physical entity, and should be set to a&#13;
+distinct value for each version or model of the physical&#13;
+entity.</description>
+                    <inventory_link>HARDWARE_FULL</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>CPU usage</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.3.0</snmp_oid>
+                    <key>fgSysCpuUsage</key>
+                    <units>%</units>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysCpuUsage&#13;
+&#13;
+Current CPU usage (percentage)</description>
+                    <applications>
+                        <application>
+                            <name>CPU</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                            <name>High CPU usage (over {$CPU.UTIL.CRIT}% for 5m)</name>
+                            <opdata>Current utilization: {ITEM.LASTVALUE1}</opdata>
+                            <priority>WARNING</priority>
+                            <description>CPU utilization is too high. The system might be slow to respond.</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Memory usage</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.4.0</snmp_oid>
+                    <key>fgSysMemUsage</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysMemUsage&#13;
+&#13;
+Current memory utilization (percentage)</description>
+                    <applications>
+                        <application>
+                            <name>Memory</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                            <name>High memory usage ( &gt;{$MEMORY.UTIL.MAX}% for 5m)</name>
+                            <priority>WARNING</priority>
+                            <description>The system is running out of free memory.</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>IPv4 Active sessions</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.8.0</snmp_oid>
+                    <key>fgSysSesCount</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysSesCount&#13;
+&#13;
+Number of active sessions on the device</description>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Firmware Version</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.1.0</snmp_oid>
+                    <key>fgSysVersion</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysVersion&#13;
+&#13;
+Firmware version of the device</description>
+                    <inventory_link>OS_SHORT</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>SSL VPN state</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>public</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.12.2.3.1.1.1</snmp_oid>
+                    <key>fgVpnSslState</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgVpnSslState&#13;
+&#13;
+Whether SSL-VPN is enabled on this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>VPN</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>FORTINET-CORE-MIB::FnBoolState</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>Active SSL VPN users</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.12.2.3.1.2.1</snmp_oid>
+                    <key>fgVpnSslStatsLoginUsers</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgVpnSslStatsLoginUsers&#13;
+&#13;
+The current number of users logged in through SSL-VPN tunnels in the virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>VPN</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Active IPsec VPN tunnels</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.12.1.1.0</snmp_oid>
+                    <key>fgVpnTunnelUpCount</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgVpnTunnelUpCount&#13;
+&#13;
+The number of IPsec VPN tunnels with at least one SA</description>
+                    <applications>
+                        <application>
+                            <name>VPN</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Device Serial Number</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.100.1.1.1.0</snmp_oid>
+                    <key>fnSysSerial</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-CORE-MIB::fnSysSerial&#13;
+&#13;
+Device serial number. This is the same serial number as given&#13;
+in the ENTITY-MIB tables for the base entity.&#13;
+&#13;
+If in HA returns the master SN only.</description>
+                    <inventory_link>SERIALNO_A</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Operating System</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.1.0</snmp_oid>
+                    <key>system.sw.os[sysDescr.0]</key>
+                    <delay>1h</delay>
+                    <history>2w</history>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysVersion.0</description>
+                    <inventory_link>OS</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>fgProcessor</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.12356.101.4.4.2.1.1]</snmp_oid>
+                    <key>fgProcessorEntIndex</key>
+                    <delay>1h</delay>
+                    <description>FORTINET-FORTIGATE-MIB::fgProcessorEntIndex&#13;
+&#13;
+A unique identifier within the fgProcessorTable</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Average Usage of System Process over 1min per Processor#$1</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>fgProcessorSysUsage.[{#SNMPINDEX}]</key>
+                            <units>%</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorSysUsage&#13;
+&#13;
+The processor's CPU system space usage, which is an average&#13;
+calculated over the last minute.&#13;
+(only valid for processors types that support this statistic).</description>
+                            <applications>
+                                <application>
+                                    <name>CPU</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Average Usage over 1min per Processor#$1</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>fgProcessorUsage.[{#SNMPINDEX}]</key>
+                            <units>%</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorUsage&#13;
+&#13;
+The processor's CPU usage (percentage), which is an average&#13;
+calculated over the last minute.&#13;
+(only valid for processors types that support this statistic).</description>
+                            <applications>
+                                <application>
+                                    <name>CPU</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Average Usage over 5sec per Processor#$1</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>fgProcessorUsage5sec.[{#SNMPINDEX}]</key>
+                            <delay>5s</delay>
+                            <units>%</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorUsage5sec&#13;
+&#13;
+The processor's CPU usage (percentage), which is an average&#13;
+calculated over the last 5 sec.&#13;
+(only valid for processors types that support this statistic).</description>
+                            <applications>
+                                <application>
+                                    <name>CPU</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Average Usage of User Process over 1min per Processor#$1</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.9.{#SNMPINDEX}</snmp_oid>
+                            <key>fgProcessorUserUsage.[{#SNMPINDEX}]</key>
+                            <units>%</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorUserUsage&#13;
+&#13;
+The processor's CPU user space usage, which is an average &#13;
+calculated over the last minute.&#13;
+(only valid for processors types that support this statistic).</description>
+                            <applications>
+                                <application>
+                                    <name>CPU</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$CPU.UTIL.CRIT}</macro>
+                    <value>80</value>
+                </macro>
+                <macro>
+                    <macro>{$MEMORY.UTIL.MAX}</macro>
+                    <value>80</value>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Active VPN tunnels (IPsec and SSL)</name>
+            <graph_items>
+                <graph_item>
+                    <color>199C0D</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgVpnTunnelUpCount</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>0080FF</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgVpnSslStatsLoginUsers</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>CPU usage</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <ymax_type_1>FIXED</ymax_type_1>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgSysCpuUsage</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Memory usage</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <ymax_type_1>FIXED</ymax_type_1>
+            <graph_items>
+                <graph_item>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgSysMemUsage</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+    <value_maps>
+        <value_map>
+            <name>FORTINET-CORE-MIB::FnBoolState</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>disabled</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>enabled</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
