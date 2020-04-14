@@ -5,31 +5,38 @@
 This template goal is to contain all available SNMP information provided
 by a Fortinet FortiGate device.
 
+### Template Version
+- v1.1
+
 ### Validated Versions
 - Zabbix 4.4
 - FortiOS 6.2 / 6.4
 
-## Setup
+### Setup
 - Download the template
 - Import the template and associated them to your devices
 - Change the Device Inventory from Disabled (Zabbix default) to Automatic
 - There's no need to import the Fortinet MIBs on Zabbix Server, the template is using numeric OIDs
 
-## Zabbix Configuration
+## Template Details
+
+### Zabbix Configuration
 You can tune the following macros, which are used by some triggers:
 - {$CPU.UTIL.CRIT} = 80
 - {$MEMORY.UTIL.MAX} = 80
 
-## Template Links
+### Template Links
 - Template Module EtherLike-MIB SNMPv2
 - Template Module Generic SNMPv2
 - Template Module Interfaces SNMPv2
 
-## Discovery Rules
+### Discovery Rules
 - CPU Cores
 - Interfaces
+- SD-WAN Performance SLA
+- SOC3 Processor
 
-# Items Collected
+### Items Collected
 - CPU
     - CPU usage
     - CPU usage per core (1m and 5s)
@@ -37,6 +44,10 @@ You can tune the following macros, which are used by some triggers:
 
 - Memory
     - Memory usage
+
+- Storage
+    - Hard Disk Capacity
+    - Hard Disk Usage
 
 - Inventory
     - Serial Number
@@ -56,7 +67,15 @@ You can tune the following macros, which are used by some triggers:
     - Active SSL VPN users
     - SSL VPN state
 
-## Triggers
+- SD-WAN
+    - Health Check Name
+    - Health Check State
+    - Health Check Latency, Jitter, Packet Loss
+    - Health Packets Sent and Received
+    - Health Check VDOM
+    - Available Bandwidth Incoming / Outgoing
+
+### Triggers
 - CPU
     - High CPU usage
 
@@ -67,17 +86,36 @@ You can tune the following macros, which are used by some triggers:
     - High ICMP ping response time
     - High ICMP ping loss
 
-## Graphs
+### Graphs
 - CPU
     - CPU usage
 
 - Memory
     - Memory usage
 
+- Hard Disk
+    - Hard Disk Usage
+
 - VPN
     - Active VPN tunnels (IPsec and SSL)
 
-## Host Inventory
+- SD-WAN
+    - Health Check Latency, Jitter, Packet Loss per member
+    - Health Packets Sent and Received
+
+
+### Host Screens
+- System Performance
+    - CPU
+    - Memory
+    - Hard Disk
+    - ICMP Response Time
+
+- SD-WAN Performance SLA
+    - Performance SLA metrics per Health Check per SD-WAN member
+
+
+### Host Inventory
 This template will automatically populate the following host inventory fields:
 - Name
 - OS
@@ -90,7 +128,7 @@ This template will automatically populate the following host inventory fields:
 
 
 ## Feedback
-Please send your comments, requests for additional items and bug reports at the [Issues](https://github.com/barbosm/fortinet-zabbix/issues) session
+Please send your comments, requests for additional items and bug reports at [Issues](https://github.com/barbosm/fortinet-zabbix/issues).
 
 ## Demo
 Each items will almost always generate some automatic graphs, here's some samples:
