@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-04-08T14:50:25Z</date>
+    <date>2020-04-14T03:18:41Z</date>
     <groups>
         <group>
             <name>Templates/Network devices</name>
@@ -14,7 +14,7 @@
             <description>Zabbix Template for Fortinet FortiGate&#13;
 URL: https://github.com/barbosm/fortinet-zabbix&#13;
 Author: Michel Barbosa&#13;
-Version: 1.0&#13;
+Version: 1.1&#13;
 &#13;
 Exposes information obtained from the following MIBs (import is not required):&#13;
 - FORTINET-CORE-MIB&#13;
@@ -49,6 +49,9 @@ Exposes information obtained from the following MIBs (import is not required):&#
                     <name>Session</name>
                 </application>
                 <application>
+                    <name>Storage</name>
+                </application>
+                <application>
                     <name>VPN</name>
                 </application>
             </applications>
@@ -57,7 +60,7 @@ Exposes information obtained from the following MIBs (import is not required):&#
                     <name>Logical Description</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.2.1.47.1.2.1.1.2.1</snmp_oid>
+                    <snmp_oid>1.3.6.1.2.1.47.1.2.1.1.2.1</snmp_oid>
                     <key>entLogicalDescr</key>
                     <delay>1h</delay>
                     <trends>0</trends>
@@ -79,7 +82,7 @@ value for each version of the logical entity.</description>
                     <name>Physical Description</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.2.1.47.1.1.1.1.2.1</snmp_oid>
+                    <snmp_oid>1.3.6.1.2.1.47.1.1.1.1.2.1</snmp_oid>
                     <key>entPhysicalDesc</key>
                     <delay>1h</delay>
                     <trends>0</trends>
@@ -102,7 +105,7 @@ entity.</description>
                     <name>CPU usage</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.3.0</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.3.0</snmp_oid>
                     <key>fgSysCpuUsage</key>
                     <units>%</units>
                     <description>FORTINET-FORTIGATE-MIB::fgSysCpuUsage&#13;
@@ -124,10 +127,63 @@ Current CPU usage (percentage)</description>
                     </triggers>
                 </item>
                 <item>
+                    <name>Hard Disk Capacity</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.7.0</snmp_oid>
+                    <key>fgSysDiskCapacity</key>
+                    <delay>1h</delay>
+                    <units>B</units>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysDiskCapacity&#13;
+&#13;
+Total hard disk capacity (MB), if disk is present</description>
+                    <applications>
+                        <application>
+                            <name>Storage</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>1024</params>
+                        </step>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>1024</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Hard Disk Usage</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.6.0</snmp_oid>
+                    <key>fgSysDiskUsage</key>
+                    <units>B</units>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysDiskUsage&#13;
+&#13;
+Current hard disk usage (MB), if disk is present</description>
+                    <applications>
+                        <application>
+                            <name>Storage</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>1024</params>
+                        </step>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>1024</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
                     <name>Memory usage</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.4.0</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.4.0</snmp_oid>
                     <key>fgSysMemUsage</key>
                     <description>FORTINET-FORTIGATE-MIB::fgSysMemUsage&#13;
 &#13;
@@ -150,7 +206,7 @@ Current memory utilization (percentage)</description>
                     <name>IPv4 Active sessions</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.8.0</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.8.0</snmp_oid>
                     <key>fgSysSesCount</key>
                     <description>FORTINET-FORTIGATE-MIB::fgSysSesCount&#13;
 &#13;
@@ -162,10 +218,34 @@ Number of active sessions on the device</description>
                     </applications>
                 </item>
                 <item>
+                    <name>FortiGate Uptime</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.20.0</snmp_oid>
+                    <key>fgSysUpTime</key>
+                    <history>2w</history>
+                    <trends>0</trends>
+                    <units>uptime</units>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysUpTime&#13;
+&#13;
+The 64bit time (in hundredths of a second) since the network management portion of the system was last re-initialized.</description>
+                    <applications>
+                        <application>
+                            <name>Status</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>0.01</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
                     <name>Firmware Version</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.1.0</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.1.0</snmp_oid>
                     <key>fgSysVersion</key>
                     <delay>1h</delay>
                     <trends>0</trends>
@@ -183,8 +263,8 @@ Firmware version of the device</description>
                 <item>
                     <name>SSL VPN state</name>
                     <type>SNMPV2</type>
-                    <snmp_community>public</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.12.2.3.1.1.1</snmp_oid>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.12.2.3.1.1.1</snmp_oid>
                     <key>fgVpnSslState</key>
                     <description>FORTINET-FORTIGATE-MIB::fgVpnSslState&#13;
 &#13;
@@ -202,7 +282,7 @@ Whether SSL-VPN is enabled on this virtual domain</description>
                     <name>Active SSL VPN users</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.12.2.3.1.2.1</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.12.2.3.1.2.1</snmp_oid>
                     <key>fgVpnSslStatsLoginUsers</key>
                     <description>FORTINET-FORTIGATE-MIB::fgVpnSslStatsLoginUsers&#13;
 &#13;
@@ -217,7 +297,7 @@ The current number of users logged in through SSL-VPN tunnels in the virtual dom
                     <name>Active IPsec VPN tunnels</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.12.1.1.0</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.12.1.1.0</snmp_oid>
                     <key>fgVpnTunnelUpCount</key>
                     <description>FORTINET-FORTIGATE-MIB::fgVpnTunnelUpCount&#13;
 &#13;
@@ -232,7 +312,7 @@ The number of IPsec VPN tunnels with at least one SA</description>
                     <name>Device Serial Number</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.100.1.1.1.0</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.100.1.1.1.0</snmp_oid>
                     <key>fnSysSerial</key>
                     <delay>1h</delay>
                     <trends>0</trends>
@@ -254,13 +334,15 @@ If in HA returns the master SN only.</description>
                     <name>Operating System</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.1.0</snmp_oid>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.1.0</snmp_oid>
                     <key>system.sw.os[sysDescr.0]</key>
                     <delay>1h</delay>
                     <history>2w</history>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
-                    <description>FORTINET-FORTIGATE-MIB::fgSysVersion.0</description>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysVersion&#13;
+&#13;
+Firmware version of the device</description>
                     <inventory_link>OS</inventory_link>
                     <applications>
                         <application>
@@ -271,22 +353,41 @@ If in HA returns the master SN only.</description>
             </items>
             <discovery_rules>
                 <discovery_rule>
-                    <name>fgProcessor</name>
+                    <name>CPU Cores Discovery</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.12356.101.4.4.2.1.1]</snmp_oid>
-                    <key>fgProcessorEntIndex</key>
+                    <snmp_oid>discovery[{#CPU_ID},1.3.6.1.4.1.12356.101.4.4.2.1.1,{#CPU_TYPE},1.3.6.1.4.1.12356.101.4.4.2.1.4]</snmp_oid>
+                    <key>fgProcessorEntIndex.discovery</key>
                     <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#CPU_TYPE}</macro>
+                                <value>12356.101.4.4.3.1</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#CPU_TYPE}</macro>
+                                <value>12356.101.4.4.3.2</value>
+                                <formulaid>B</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#CPU_TYPE}</macro>
+                                <value>12356.101.4.4.3.3</value>
+                                <formulaid>C</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
                     <description>FORTINET-FORTIGATE-MIB::fgProcessorEntIndex&#13;
 &#13;
 A unique identifier within the fgProcessorTable</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Average Usage of System Process over 1min per Processor#$1</name>
+                            <name>Average Usage of System Process over 1min per Core #{#CPU_ID}</name>
                             <type>SNMPV2</type>
                             <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.10.{#SNMPINDEX}</snmp_oid>
-                            <key>fgProcessorSysUsage.[{#SNMPINDEX}]</key>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.10.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorSysUsage.[{#CPU_ID}]</key>
                             <units>%</units>
                             <description>FORTINET-FORTIGATE-MIB::fgProcessorSysUsage&#13;
 &#13;
@@ -300,11 +401,29 @@ calculated over the last minute.&#13;
                             </applications>
                         </item_prototype>
                         <item_prototype>
-                            <name>Average Usage over 1min per Processor#$1</name>
+                            <name>Core #{#CPU_ID} Processor Type</name>
                             <type>SNMPV2</type>
                             <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.2.{#SNMPINDEX}</snmp_oid>
-                            <key>fgProcessorUsage.[{#SNMPINDEX}]</key>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.4.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorType.[{#CPU_ID}]</key>
+                            <delay>1h</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorType&#13;
+&#13;
+An indication of the type of the processor. Types are defined in fgProcessorTypes.</description>
+                            <applications>
+                                <application>
+                                    <name>CPU</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Average Usage over 1min per Core #{#CPU_ID}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.2.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorUsage.[{#CPU_ID}]</key>
                             <units>%</units>
                             <description>FORTINET-FORTIGATE-MIB::fgProcessorUsage&#13;
 &#13;
@@ -318,11 +437,11 @@ calculated over the last minute.&#13;
                             </applications>
                         </item_prototype>
                         <item_prototype>
-                            <name>Average Usage over 5sec per Processor#$1</name>
+                            <name>Average Usage over 5sec per Core #{#CPU_ID}</name>
                             <type>SNMPV2</type>
                             <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.3.{#SNMPINDEX}</snmp_oid>
-                            <key>fgProcessorUsage5sec.[{#SNMPINDEX}]</key>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.3.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorUsage5sec.[{#CPU_ID}]</key>
                             <delay>5s</delay>
                             <units>%</units>
                             <description>FORTINET-FORTIGATE-MIB::fgProcessorUsage5sec&#13;
@@ -337,11 +456,11 @@ calculated over the last 5 sec.&#13;
                             </applications>
                         </item_prototype>
                         <item_prototype>
-                            <name>Average Usage of User Process over 1min per Processor#$1</name>
+                            <name>Average Usage of User Process over 1min per Core #{#CPU_ID}</name>
                             <type>SNMPV2</type>
                             <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                            <snmp_oid>.1.3.6.1.4.1.12356.101.4.4.2.1.9.{#SNMPINDEX}</snmp_oid>
-                            <key>fgProcessorUserUsage.[{#SNMPINDEX}]</key>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.9.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorUserUsage.[{#CPU_ID}]</key>
                             <units>%</units>
                             <description>FORTINET-FORTIGATE-MIB::fgProcessorUserUsage&#13;
 &#13;
@@ -355,6 +474,421 @@ calculated over the last minute.&#13;
                             </applications>
                         </item_prototype>
                     </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Average Usage over 1m and 5s per Core - Core #{#CPU_ID}</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgProcessorUsage.[{#CPU_ID}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgProcessorUsage5sec.[{#CPU_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>CPU usage per core - Core #{#CPU_ID}</name>
+                            <type>STACKED</type>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgProcessorSysUsage.[{#CPU_ID}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgProcessorUserUsage.[{#CPU_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>SoC3 Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#CPU_ID},1.3.6.1.4.1.12356.101.4.4.2.1.1,{#CPU_TYPE},1.3.6.1.4.1.12356.101.4.4.2.1.4]</snmp_oid>
+                    <key>fgProcessorEntIndex.NP6LITE.discovery</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#CPU_TYPE}</macro>
+                                <value>12356.101.4.4.3.9</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <description>FORTINET-FORTIGATE-MIB::fgProcessorEntIndex&#13;
+&#13;
+A unique identifier within the fgProcessorTable</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>SOC3 Packets Dropped</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.8.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorPktDroppedCount.[{#CPU_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorPktDroppedCount&#13;
+&#13;
+The total number of packets dropped by this processor&#13;
+(only valid for processors types that support this statistic).</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SoC3</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SOC3 Packets Received</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.6.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorPktRxCount.[{#CPU_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorPktRxCount&#13;
+&#13;
+The total number of packets received by this processor&#13;
+(only valid for processors types that support this statistic).</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SoC3</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SOC3 Packets Transmitted</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.4.2.1.7.{#CPU_ID}</snmp_oid>
+                            <key>fgProcessorPktTxCount.[{#CPU_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgProcessorPktTxCount&#13;
+&#13;
+The total number of packets transmitted by this processor&#13;
+(only valid for processors types that support this statistic).</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SoC3</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>SoC3 Packet Flow - {#CPU_ID}</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgProcessorPktDroppedCount.[{#CPU_ID}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgProcessorPktRxCount.[{#CPU_ID}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgProcessorPktTxCount.[{#CPU_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>SD-WAN Health Check Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#HC_ID},1.3.6.1.4.1.12356.101.4.9.2.1.1,{#HC_NAME},1.3.6.1.4.1.12356.101.4.9.2.1.2,{#MEMBER_SEQ},1.3.6.1.4.1.12356.101.4.9.2.1.3,{#VDOM},1.3.6.1.4.1.12356.101.4.9.2.1.10]</snmp_oid>
+                    <key>fgVWLHealthCheckLink.discovery</key>
+                    <delay>1h</delay>
+                    <lifetime>0</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Available Bidirectional Bandwidth of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.13.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkBandwidthBi.[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkBandwidthBi&#13;
+&#13;
+The available bandwidth in Mbps of bi-direction traffic detected by a health-check on a specific member link.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Available Incoming Bandwidth of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.11.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkBandwidthIn.[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkBandwidthIn&#13;
+&#13;
+The available bandwidth in Mbps of incoming traffic detected by a health-check on a specific member link.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Available Outgoing Bandwidth of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.12.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkBandwidthOut.[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkBandwidthOut&#13;
+&#13;
+The available bandwidth in Mbps of outgoing traffic detected by a health-check on a specific member link.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Jitter to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.6.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkJitter[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Latency to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.5.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkLatency[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{min(1m)}&gt;250</expression>
+                                    <name>High latency for {#HC_NAME} (over 250ms)</name>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Packet Loss to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.9.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkPacketLoss[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Packets received from {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.8.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkPacketRecv[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkPacketRecv&#13;
+&#13;
+The total number of packets received by a health check on a specific member link.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Packets sent to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.7.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkPacketSend[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <value_type>FLOAT</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkPacketSend&#13;
+&#13;
+The total number of packets sent by a health check on a specific member link.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Health Check State to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.4.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkState[{#HC_ID}]</key>
+                            <delay>30s</delay>
+                            <description>FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkState&#13;
+&#13;
+Heatlth check state on a specific member link.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <valuemap>
+                                <name>Alarm state</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VDOM of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.4.9.2.1.10.{#HC_ID}</snmp_oid>
+                            <key>fgVWLHealthCheckLinkVdom.[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                            <delay>30s</delay>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkVdom&#13;
+&#13;
+Virtual domain the link monitor entry exists in. This name corresponds to the fgVdEntName used in fgVdTable.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>SD-WAN</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Performance SLA Metrics to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgVWLHealthCheckLinkJitter[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgVWLHealthCheckLinkLatency[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <color>F7941D</color>
+                                    <yaxisside>RIGHT</yaxisside>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgVWLHealthCheckLinkPacketLoss[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Probe Packets to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgVWLHealthCheckLinkPacketRecv[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgVWLHealthCheckLinkPacketSend[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
                 </discovery_rule>
             </discovery_rules>
             <macros>
@@ -367,6 +901,132 @@ calculated over the last minute.&#13;
                     <value>80</value>
                 </macro>
             </macros>
+            <screens>
+                <screen>
+                    <name>SD-WAN Performance SLA</name>
+                    <hsize>1</hsize>
+                    <vsize>1</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>Performance SLA Metrics to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>640</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+                <screen>
+                    <name>System Performance</name>
+                    <hsize>2</hsize>
+                    <vsize>2</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>CPU usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>Memory usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>Hard Disk Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>ICMP response time</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+            </screens>
         </template>
     </templates>
     <graphs>
@@ -406,6 +1066,41 @@ calculated over the last minute.&#13;
             </graph_items>
         </graph>
         <graph>
+            <name>Hard Disk Usage</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <graph_items>
+                <graph_item>
+                    <drawtype>DASHED_LINE</drawtype>
+                    <color>F63100</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgSysDiskCapacity</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>FF8000</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgSysDiskUsage</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>ICMP response time</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <graph_items>
+                <graph_item>
+                    <color>2774A4</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>icmppingsec</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
             <name>Memory usage</name>
             <ymin_type_1>FIXED</ymin_type_1>
             <ymax_type_1>FIXED</ymax_type_1>
@@ -421,6 +1116,19 @@ calculated over the last minute.&#13;
         </graph>
     </graphs>
     <value_maps>
+        <value_map>
+            <name>Alarm state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Ok</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Alarm</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
         <value_map>
             <name>FORTINET-CORE-MIB::FnBoolState</name>
             <mappings>
