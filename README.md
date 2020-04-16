@@ -35,6 +35,7 @@ You can tune the following macros, which are used by some triggers:
 - Interfaces
 - SD-WAN Performance SLA
 - SOC3 Processor
+- High Availability
 
 ### Items Collected
 - CPU
@@ -48,6 +49,7 @@ You can tune the following macros, which are used by some triggers:
 - Storage
     - Hard Disk Capacity
     - Hard Disk Usage
+    - Hard Disk Usage Rate
 
 - Inventory
     - Serial Number
@@ -74,6 +76,15 @@ You can tune the following macros, which are used by some triggers:
     - Health Packets Sent and Received
     - Health Check VDOM
     - Available Bandwidth Incoming / Outgoing
+
+- High Availability
+    - HA Mode, Group ID, Cluster Name, Member Priority
+    - Master Override, Master SN, Config Sync, Config Checksum
+    - CPU, Memory, Network Usage per member
+    - Session Count, Packet and Bytes Processed per member
+    - AV and IPS event rate per member
+    - Hostname, Sync Status, Sync Time (Success and Failure)
+
 
 ### Triggers
 - CPU
@@ -103,6 +114,15 @@ You can tune the following macros, which are used by some triggers:
     - Health Check Latency, Jitter, Packet Loss per member
     - Health Packets Sent and Received
 
+- Session
+    - IPv4 Concurrent Connections
+
+- High Availability
+    - Concurrent Connections
+    - CPU Usage
+    - Memory Usage
+    - Network Bandwidth Usage
+    - Security Events Rate
 
 ### Host Screens
 - System Performance
@@ -113,6 +133,9 @@ You can tune the following macros, which are used by some triggers:
 
 - SD-WAN Performance SLA
     - Performance SLA metrics per Health Check per SD-WAN member
+
+- High Availability
+    - All graph prototypes available
 
 
 ### Host Inventory
@@ -133,9 +156,12 @@ Please send your comments, requests for additional items and bug reports at [Iss
 ## Demo
 Each items will almost always generate some automatic graphs, here's some samples:
 
-![Active VPN Tunnels][active_vpn_tunnels]
+- Active VPN Tunnels Graph
+![Active VPN Tunnels](/static/active_vpn_tunnels.png)
 
-[active_vpn_tunnels]: /static/active_vpn_tunnels.png "Active VPN Tunnels"
+- High Availability Screen
+![High Availability 01](/static/ha_screen_01.png)
+![High Availability 02](/static/ha_screen_02.png)
 
 
 ## Known Issues
