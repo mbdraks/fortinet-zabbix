@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-04-14T03:18:41Z</date>
+    <date>2020-04-16T11:19:20Z</date>
     <groups>
         <group>
             <name>Templates/Network devices</name>
@@ -14,7 +14,7 @@
             <description>Zabbix Template for Fortinet FortiGate&#13;
 URL: https://github.com/barbosm/fortinet-zabbix&#13;
 Author: Michel Barbosa&#13;
-Version: 1.1&#13;
+Version: 1.2&#13;
 &#13;
 Exposes information obtained from the following MIBs (import is not required):&#13;
 - FORTINET-CORE-MIB&#13;
@@ -38,6 +38,9 @@ Exposes information obtained from the following MIBs (import is not required):&#
             <applications>
                 <application>
                     <name>CPU</name>
+                </application>
+                <application>
+                    <name>High Availability</name>
                 </application>
                 <application>
                     <name>Inventory</name>
@@ -100,6 +103,126 @@ entity.</description>
                             <name>Inventory</name>
                         </application>
                     </applications>
+                </item>
+                <item>
+                    <name>HA Config Sync</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.13.1.5.0</snmp_oid>
+                    <key>fgHaAutoSync</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaAutoSync&#13;
+&#13;
+Configuration of an automatic configuration&#13;
+synchronization (enabled or disabled)</description>
+                    <applications>
+                        <application>
+                            <name>High Availability</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>FORTINET-CORE-MIB::FnBoolState</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>HA Cluster Group ID</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.13.1.2.0</snmp_oid>
+                    <key>fgHaGroupId</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaSystemMode&#13;
+&#13;
+HA cluster group ID device is configured for</description>
+                    <applications>
+                        <application>
+                            <name>High Availability</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>HA Cluster Name</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.13.1.7.0</snmp_oid>
+                    <key>fgHaGroupName</key>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaGroupName&#13;
+&#13;
+HA cluster group name</description>
+                    <applications>
+                        <application>
+                            <name>High Availability</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>HA Cluster Master Override</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.13.1.4.0</snmp_oid>
+                    <key>fgHaOverride</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaOverride&#13;
+&#13;
+Status of a master override flag</description>
+                    <applications>
+                        <application>
+                            <name>High Availability</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>FORTINET-CORE-MIB::FnBoolState</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>HA Cluster Priority</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.13.1.3.0</snmp_oid>
+                    <key>fgHaPriority</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaPriority&#13;
+&#13;
+HA clustering priority of the device (default = 128)</description>
+                    <applications>
+                        <application>
+                            <name>High Availability</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>HA Load-balancing Schedule</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.13.1.6.0</snmp_oid>
+                    <key>fgHaSchedule</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaSchedule&#13;
+&#13;
+Load-balancing schedule of cluster (in A-A mode)</description>
+                    <applications>
+                        <application>
+                            <name>High Availability</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>FORTINET-FORTIGATE-MIB::FgHaLBSchedule</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>HA Mode</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.13.1.1.0</snmp_oid>
+                    <key>fgHaSystemMode</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaSystemMode&#13;
+&#13;
+High-availability mode (Standalone, A-A or A-P)</description>
+                    <applications>
+                        <application>
+                            <name>High Availability</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>FORTINET-FORTIGATE-MIB::FgHaMode</name>
+                    </valuemap>
                 </item>
                 <item>
                     <name>CPU usage</name>
@@ -176,6 +299,36 @@ Current hard disk usage (MB), if disk is present</description>
                         <step>
                             <type>MULTIPLIER</type>
                             <params>1024</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Hard Disk Usage Rate</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.1.6.0</snmp_oid>
+                    <key>fgSysDiskUsage.Rate</key>
+                    <units>B</units>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysDiskUsage&#13;
+&#13;
+Current hard disk usage (MB), if disk is present</description>
+                    <applications>
+                        <application>
+                            <name>Storage</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>1024</params>
+                        </step>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <params>1024</params>
+                        </step>
+                        <step>
+                            <type>CHANGE_PER_SECOND</type>
+                            <params/>
                         </step>
                     </preprocessing>
                 </item>
@@ -352,6 +505,373 @@ Firmware version of the device</description>
                 </item>
             </items>
             <discovery_rules>
+                <discovery_rule>
+                    <name>High Availability Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#HA_ID},1.3.6.1.4.1.12356.101.13.2.1.1.1,{#HA_SN},1.3.6.1.4.1.12356.101.13.2.1.1.2]</snmp_oid>
+                    <key>fgHaStatsTable.discovery</key>
+                    <delay>1h</delay>
+                    <description>FORTINET-FORTIGATE-MIB::fgHaStatsTable&#13;
+&#13;
+Some useful statistics for all members of a cluster. This table is also available in standalone mode.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - AV Events Rate</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.10.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsAvCount.rate.[{#HA_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsAvCount&#13;
+&#13;
+Number of anti-virus events triggered on the specified cluster member since start-up</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Bytes Processed Rate</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.8.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsByteCount.rate.[{#HA_ID}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsByteCount&#13;
+&#13;
+Number of bytes processed by the specified cluster member since start-up</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>8</params>
+                                </step>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - CPU Usage</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.3.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsCpuUsage.[{#HA_ID}]</key>
+                            <units>%</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsCpuUsage&#13;
+&#13;
+CPU usage of the specified cluster member (percentage)</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Global Checksum</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.15.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsGlobalChecksum.[{#HA_ID}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsGlobalChecksum&#13;
+&#13;
+Current HA global checksum value</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Hostname</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.11.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsHostname.[{#HA_ID}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsHostname&#13;
+&#13;
+Host name of the specified cluster member</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - IPS Events Rate</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.9.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsIdsCount.rate.[{#HA_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsIdsCount&#13;
+&#13;
+Number of IDS/IPS events triggered on the specified cluster member since start-up</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Master SN</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.16.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsMasterSerial.[{#HA_ID}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsMasterSerial&#13;
+&#13;
+Serial number of master during the last synch attempt (successful of not)</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Memory Usage</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.4.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsMemUsage.[{#HA_ID}]</key>
+                            <units>%</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsMemUsage&#13;
+&#13;
+Memory usage of the specified cluster member (percentage)</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Network Bandwidth Usage</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.5.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsNetUsage.[{#HA_ID}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsNetUsage&#13;
+&#13;
+Network bandwidth usage of specified cluster member (kbps)</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1024</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Packets Processed Rate</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.7.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsPktCount.rate.[{#HA_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsPktCount&#13;
+&#13;
+Number of packets processed by the specified cluster member since start-up</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Serial Number</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.2.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsSerial.[{#HA_ID}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsSerial&#13;
+&#13;
+Serial number of the HA cluster member</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Concurrent Connections</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.6.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsSesCount.[{#HA_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsSesCount&#13;
+&#13;
+Current session count of specified cluster member</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Sync Success Time</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.13.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsSyncDatimeSucc.[{#HA_ID}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsSyncDatimeSucc&#13;
+&#13;
+Date and time of last successful sync</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Sync Failed Time</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.14.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsSyncDatimeUnsucc.[{#HA_ID}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsSyncDatimeUnsucc&#13;
+&#13;
+Date and time of last unsuccessful sync</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Sync Status</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.13.2.1.1.12.{#HA_ID}</snmp_oid>
+                            <key>fgHaStatsSyncStatus.[{#HA_ID}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgHaStatsSyncStatus&#13;
+&#13;
+Current HA Sync status</description>
+                            <applications>
+                                <application>
+                                    <name>High Availability</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-FORTIGATE-MIB::FgHaStatsSyncStatusType</name>
+                            </valuemap>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Concurrent Connections</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgHaStatsSesCount.[{#HA_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>HA Cluster Member {#HA_ID} - CPU Usage</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <ymax_type_1>FIXED</ymax_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgHaStatsCpuUsage.[{#HA_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Memory Usage</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgHaStatsMemUsage.[{#HA_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Network Bandwidth Usage</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgHaStatsNetUsage.[{#HA_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>HA Cluster Member {#HA_ID} - Security Events Rate</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgHaStatsAvCount.rate.[{#HA_ID}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgHaStatsIdsCount.rate.[{#HA_ID}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
                 <discovery_rule>
                     <name>CPU Cores Discovery</name>
                     <type>SNMPV2</type>
@@ -903,6 +1423,123 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
             </macros>
             <screens>
                 <screen>
+                    <name>High Availability</name>
+                    <hsize>1</hsize>
+                    <vsize>5</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Concurrent Connections</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - CPU Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Memory Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>2</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Network Bandwidth Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>3</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Security Events Rate</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>4</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+                <screen>
                     <name>SD-WAN Performance SLA</name>
                     <hsize>1</hsize>
                     <vsize>1</vsize>
@@ -1101,6 +1738,19 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
             </graph_items>
         </graph>
         <graph>
+            <name>IPv4 Concurrent Connections</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <graph_items>
+                <graph_item>
+                    <color>199C0D</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgSysSesCount</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
             <name>Memory usage</name>
             <ymin_type_1>FIXED</ymin_type_1>
             <ymax_type_1>FIXED</ymax_type_1>
@@ -1139,6 +1789,73 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                 <mapping>
                     <value>2</value>
                     <newvalue>enabled</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>FORTINET-FORTIGATE-MIB::FgHaLBSchedule</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>none</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>hub</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>leastConnections</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>roundRobin</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>weightedRoundRobin</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>random</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>ipBased</newvalue>
+                </mapping>
+                <mapping>
+                    <value>8</value>
+                    <newvalue>ipPortBased</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>FORTINET-FORTIGATE-MIB::FgHaMode</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>standalone</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>activeActive</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>activePassive</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>FORTINET-FORTIGATE-MIB::FgHaStatsSyncStatusType</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>unsynchronized</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>synchronized</newvalue>
                 </mapping>
             </mappings>
         </value_map>
