@@ -14,7 +14,7 @@ by a Fortinet FortiGate device.
 
 ### Setup
 - Download the template
-- Import the template and associated them to your devices
+- Import the template and associate them to your devices
 - Change the Device Inventory from Disabled (Zabbix default) to Automatic
 - There's no need to import the Fortinet MIBs on Zabbix Server, the template is using numeric OIDs
 
@@ -152,6 +152,9 @@ This template will automatically populate the following host inventory fields:
 
 ## Feedback
 Please send your comments, requests for additional items and bug reports at [Issues](https://github.com/barbosm/fortinet-zabbix/issues).
+
+## Additional Info
+Detailed OID coverage report is available at [Coverage](COVERAGE.md)
 
 ## Demo
 Each items will almost always generate some automatic graphs, here's some samples:
