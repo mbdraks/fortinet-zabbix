@@ -70,7 +70,7 @@ for line in combined_missing:
 missing = markdown_table.render(headers,missing_list)
 
 total_coverage = len(combined_results)
-full_oid = len(parsed_oids[1:])
+full_oid = len(parsed_oids)
 coverage_percentage = (total_coverage/full_oid)*100
 
 summary = f''' 
