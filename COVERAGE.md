@@ -3,7 +3,7 @@
 # Coverage Summary
 
     Full OID list: 1553
-    Coverage: 58 (3.73%)
+    Coverage: 69 (4.44%)
 
 # Coverage Detailed
 
@@ -46,6 +46,8 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSystemInfo.fgSysMemUsa
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSystemInfo.fgSysDiskUsage|1.3.6.1.4.1.12356.101.4.1.6
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSystemInfo.fgSysDiskCapacity|1.3.6.1.4.1.12356.101.4.1.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSystemInfo.fgSysSesCount|1.3.6.1.4.1.12356.101.4.1.8
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSoftware.fgSysVersionIps|1.3.6.1.4.1.12356.101.4.2.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSoftware.fgSysVersionIpsEt|1.3.6.1.4.1.12356.101.4.2.4
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgProcessors.fgProcessorTable.fgProcessorEntry.fgProcessorEntIndex|1.3.6.1.4.1.12356.101.4.4.2.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgProcessors.fgProcessorTable.fgProcessorEntry.fgProcessorSysUsage|1.3.6.1.4.1.12356.101.4.4.2.1.10
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgProcessors.fgProcessorTable.fgProcessorEntry.fgProcessorUsage|1.3.6.1.4.1.12356.101.4.4.2.1.2
@@ -67,6 +69,15 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgV
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgVWLHealthCheckLinkTable.fgVWLHealthCheckLinkTableEntry.fgVWLHealthCheckLinkPacketSend|1.3.6.1.4.1.12356.101.4.9.2.1.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgVWLHealthCheckLinkTable.fgVWLHealthCheckLinkTableEntry.fgVWLHealthCheckLinkPacketRecv|1.3.6.1.4.1.12356.101.4.9.2.1.8
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgVWLHealthCheckLinkTable.fgVWLHealthCheckLinkTableEntry.fgVWLHealthCheckLinkPacketLoss|1.3.6.1.4.1.12356.101.4.9.2.1.9
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsIntrusionsDetected|1.3.6.1.4.1.12356.101.9.2.1.1.1
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsIntrusionsBlocked|1.3.6.1.4.1.12356.101.9.2.1.1.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsCritSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.3
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsHighSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.4
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsMedSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.5
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsLowSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.6
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsInfoSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.7
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsSignatureDetections|1.3.6.1.4.1.12356.101.9.2.1.1.8
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsAnomalyDetections|1.3.6.1.4.1.12356.101.9.2.1.1.9
 
 # Missing Detailed
 
@@ -1349,9 +1360,7 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgDpdkEngs.fgDpdkEngTabl
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgDpdkEngs.fgDpdkEngTable.fgDpdkEngEntry.fgDpdkEngTxUsage|1.3.6.1.4.1.12356.101.4.12.2.1.5
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgDpdkEngs.fgDpdkEngTable.fgDpdkEngEntry.fgDpdkEngIdle|1.3.6.1.4.1.12356.101.4.12.2.1.6
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSoftware.fgSysVersionAv|1.3.6.1.4.1.12356.101.4.2.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSoftware.fgSysVersionIps|1.3.6.1.4.1.12356.101.4.2.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSoftware.fgSysVersionAvEt|1.3.6.1.4.1.12356.101.4.2.3
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSoftware.fgSysVersionIpsEt|1.3.6.1.4.1.12356.101.4.2.4
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgHwSensors.fgHwSensorCount|1.3.6.1.4.1.12356.101.4.3.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgHwSensors.fgHwSensorTable.fgHwSensorEntry.fgHwSensorEntIndex|1.3.6.1.4.1.12356.101.4.3.2.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgHwSensors.fgHwSensorTable.fgHwSensorEntry.fgHwSensorEntName|1.3.6.1.4.1.12356.101.4.3.2.1.2
@@ -1552,15 +1561,6 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgAntivirus.fgAvTables.fgAvStatsT
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgAntivirus.fgAvTables.fgAvStatsTable.fgAvStatsEntry.fgAvPOP3VirusDetected|1.3.6.1.4.1.12356.101.8.2.1.1.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgAntivirus.fgAvTables.fgAvStatsTable.fgAvStatsEntry.fgAvPOP3VirusBlocked|1.3.6.1.4.1.12356.101.8.2.1.1.8
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgAntivirus.fgAvTables.fgAvStatsTable.fgAvStatsEntry.fgAvIMAPVirusDetected|1.3.6.1.4.1.12356.101.8.2.1.1.9
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsIntrusionsDetected|1.3.6.1.4.1.12356.101.9.2.1.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsIntrusionsBlocked|1.3.6.1.4.1.12356.101.9.2.1.1.2
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsCritSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.3
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsHighSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.4
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsMedSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.5
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsLowSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.6
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsInfoSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.7
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsSignatureDetections|1.3.6.1.4.1.12356.101.9.2.1.1.8
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsAnomalyDetections|1.3.6.1.4.1.12356.101.9.2.1.1.9
 SNMPv2-MIB:snmpMIBObjects.snmpTraps.coldStart|1.3.6.1.6.3.1.1.5.1
 SNMPv2-MIB:snmpMIBObjects.snmpTraps.warmStart|1.3.6.1.6.3.1.1.5.2
 IF-MIB:snmpMIB.snmpMIBObjects.snmpTraps.linkDown|1.3.6.1.6.3.1.1.5.3
