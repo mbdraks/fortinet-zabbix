@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-05-07T14:09:49Z</date>
+    <date>2020-05-07T14:21:03Z</date>
     <groups>
         <group>
             <name>Templates/Network devices</name>
@@ -1604,6 +1604,123 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
             </macros>
             <screens>
                 <screen>
+                    <name>HA Statistics</name>
+                    <hsize>1</hsize>
+                    <vsize>5</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Concurrent Connections</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - CPU Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Memory Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>2</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Network Bandwidth Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>3</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Security Events Rate</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>4</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+                <screen>
                     <name>High Availability</name>
                     <hsize>1</hsize>
                     <vsize>5</vsize>
@@ -1923,14 +2040,6 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
             <ymin_type_1>FIXED</ymin_type_1>
             <graph_items>
                 <graph_item>
-                    <color>199C0D</color>
-                    <item>
-                        <host>Template Net Fortinet FortiGate SNMPv2</host>
-                        <key>fgIpsIntrusionsBlocked</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
                     <color>F63100</color>
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
@@ -1938,15 +2047,15 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>2</sortorder>
-                    <color>2774A4</color>
+                    <sortorder>1</sortorder>
+                    <color>199C0D</color>
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
-                        <key>fgIpsAnomalyDetections</key>
+                        <key>fgIpsIntrusionsBlocked</key>
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>3</sortorder>
+                    <sortorder>2</sortorder>
                     <color>F7941D</color>
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
@@ -1954,7 +2063,7 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>4</sortorder>
+                    <sortorder>3</sortorder>
                     <color>FC6EA3</color>
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
@@ -1962,15 +2071,15 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>5</sortorder>
-                    <color>6C59DC</color>
+                    <sortorder>4</sortorder>
+                    <color>BA2A5D</color>
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
-                        <key>fgIpsInfoSevDetections</key>
+                        <key>fgIpsMedSevDetections</key>
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>6</sortorder>
+                    <sortorder>5</sortorder>
                     <color>C7A72D</color>
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
@@ -1978,11 +2087,19 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>7</sortorder>
-                    <color>BA2A5D</color>
+                    <sortorder>6</sortorder>
+                    <color>6C59DC</color>
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
-                        <key>fgIpsMedSevDetections</key>
+                        <key>fgIpsInfoSevDetections</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>7</sortorder>
+                    <color>2774A4</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsAnomalyDetections</key>
                     </item>
                 </graph_item>
                 <graph_item>
