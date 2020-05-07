@@ -6,7 +6,7 @@ This template goal is to contain all available SNMP information provided
 by a Fortinet FortiGate device.
 
 ### Template Version
-- v1.2
+- v1.3
 
 ### Validated Versions
 - Zabbix 4.4
@@ -85,6 +85,11 @@ You can tune the following macros, which are used by some triggers:
     - AV and IPS event rate per member
     - Hostname, Sync Status, Sync Time (Success and Failure)
 
+- IPS (Intrusion Prevention System)
+    - Intrusions detected and blocked
+        - Detected by severity level
+        - Detected by signature or anomaly
+
 
 ### Triggers
 - CPU
@@ -123,6 +128,9 @@ You can tune the following macros, which are used by some triggers:
     - Memory Usage
     - Network Bandwidth Usage
     - Security Events Rate
+
+- IPS
+    - All IPS metrics
 
 ### Host Screens
 - System Performance

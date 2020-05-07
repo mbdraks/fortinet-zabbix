@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-04-16T11:19:20Z</date>
+    <date>2020-05-07T14:21:03Z</date>
     <groups>
         <group>
             <name>Templates/Network devices</name>
@@ -14,7 +14,7 @@
             <description>Zabbix Template for Fortinet FortiGate&#13;
 URL: https://github.com/barbosm/fortinet-zabbix&#13;
 Author: Michel Barbosa&#13;
-Version: 1.2&#13;
+Version: 1.3&#13;
 &#13;
 Exposes information obtained from the following MIBs (import is not required):&#13;
 - FORTINET-CORE-MIB&#13;
@@ -44,6 +44,9 @@ Exposes information obtained from the following MIBs (import is not required):&#
                 </application>
                 <application>
                     <name>Inventory</name>
+                </application>
+                <application>
+                    <name>IPS</name>
                 </application>
                 <application>
                     <name>Memory</name>
@@ -223,6 +226,148 @@ High-availability mode (Standalone, A-A or A-P)</description>
                     <valuemap>
                         <name>FORTINET-FORTIGATE-MIB::FgHaMode</name>
                     </valuemap>
+                </item>
+                <item>
+                    <name>Intrusions detected - Anomaly based</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.9.1</snmp_oid>
+                    <key>fgIpsAnomalyDetections</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsAnomalyDetections&#13;
+&#13;
+Number of intrusions detected by signature&#13;
+since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions detected - Critical</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.3.1</snmp_oid>
+                    <key>fgIpsCritSevDetections</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsCritSevDetections&#13;
+&#13;
+Number of critical severity intrusions&#13;
+detected since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions detected - High</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.4.1</snmp_oid>
+                    <key>fgIpsHighSevDetections</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsHighSevDetections&#13;
+&#13;
+Number of high severity intrusions &#13;
+detected since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions detected - Info</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.7.1</snmp_oid>
+                    <key>fgIpsInfoSevDetections</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsInfoSevDetections&#13;
+&#13;
+Number of informational severity intrusions&#13;
+detected since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions blocked</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.2.1</snmp_oid>
+                    <key>fgIpsIntrusionsBlocked</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsIntrusionsBlocked&#13;
+&#13;
+Number of intrusions blocked since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions detected</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.1.1</snmp_oid>
+                    <key>fgIpsIntrusionsDetected</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsIntrusionsDetected&#13;
+&#13;
+Number of intrusions detected since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions detected - Low</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.6.1</snmp_oid>
+                    <key>fgIpsLowSevDetections</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsLowSevDetections&#13;
+&#13;
+Number of low severity intrusions &#13;
+detected since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions detected - Medium</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.5.1</snmp_oid>
+                    <key>fgIpsMedSevDetections</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsMedSevDetections&#13;
+&#13;
+Number of medium severity intrusions &#13;
+detected since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Intrusions detected - Signature based</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.9.2.1.1.8.1</snmp_oid>
+                    <key>fgIpsSignatureDetections</key>
+                    <description>FORTINET-FORTIGATE-MIB::fgIpsSignatureDetections&#13;
+&#13;
+Number of intrusions detected by signature&#13;
+since start-up in this virtual domain</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
                 </item>
                 <item>
                     <name>CPU usage</name>
@@ -410,6 +555,42 @@ Firmware version of the device</description>
                     <applications>
                         <application>
                             <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPS Database Version</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.2.2.0</snmp_oid>
+                    <key>fgSysVersionIps</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysVersionIps&#13;
+&#13;
+IPS signature database version installed on the device</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPS Database Version - Extended</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.4.2.4.0</snmp_oid>
+                    <key>fgSysVersionIpsEt</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-FORTIGATE-MIB::fgSysVersionIpsEt&#13;
+&#13;
+IPS signature extended database version installed on the device</description>
+                    <applications>
+                        <application>
+                            <name>IPS</name>
                         </application>
                     </applications>
                 </item>
@@ -1423,6 +1604,123 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
             </macros>
             <screens>
                 <screen>
+                    <name>HA Statistics</name>
+                    <hsize>1</hsize>
+                    <vsize>5</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Concurrent Connections</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - CPU Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Memory Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>2</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Network Bandwidth Usage</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>3</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>HA Cluster Member {#HA_ID} - Security Events Rate</name>
+                                <host>Template Net Fortinet FortiGate SNMPv2</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>4</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>2</max_columns>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+                <screen>
                     <name>High Availability</name>
                     <hsize>1</hsize>
                     <vsize>5</vsize>
@@ -1733,6 +2031,83 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                     <item>
                         <host>Template Net Fortinet FortiGate SNMPv2</host>
                         <key>icmppingsec</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>IPS Metrics</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <graph_items>
+                <graph_item>
+                    <color>F63100</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsIntrusionsDetected</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>199C0D</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsIntrusionsBlocked</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>F7941D</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsCritSevDetections</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <color>FC6EA3</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsHighSevDetections</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>4</sortorder>
+                    <color>BA2A5D</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsMedSevDetections</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>5</sortorder>
+                    <color>C7A72D</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsLowSevDetections</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>6</sortorder>
+                    <color>6C59DC</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsInfoSevDetections</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>7</sortorder>
+                    <color>2774A4</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsAnomalyDetections</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>8</sortorder>
+                    <color>F230E0</color>
+                    <item>
+                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                        <key>fgIpsSignatureDetections</key>
                     </item>
                 </graph_item>
             </graph_items>
