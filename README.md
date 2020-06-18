@@ -6,7 +6,7 @@ This template goal is to contain all available SNMP information provided
 by a Fortinet FortiGate device.
 
 ### Template Version
-- v1.3
+- v1.4
 
 ### Validated Versions
 - Zabbix 4.4
