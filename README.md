@@ -24,6 +24,8 @@ by a Fortinet FortiGate device.
 You can tune the following macros, which are used by some triggers:
 - {$CPU.UTIL.CRIT} = 80
 - {$MEMORY.UTIL.MAX} = 80
+- {$IF_ID1} = 1; IF ID where Egress Shaping is configured
+- {$IF_IN_ID1} = 2; IF ID where Ingress Shaping is configured
 
 ### Template Links
 - Template Module EtherLike-MIB SNMPv2
@@ -32,12 +34,18 @@ You can tune the following macros, which are used by some triggers:
 
 ### Discovery Rules
 - CPU Cores
-- Interfaces
+- Network Interfaces (standard and FOS specific metrics)
 - SD-WAN Performance SLA
 - SOC3 Processor
 - High Availability
+- Interface-based Shaping (Ingress and Egress)
 
 ### Items Collected
+- Network Interfaces
+    - Bits received/sent, discards, errors
+    - Type, operational status, speed
+    - Estimated bandwidth (upstream and downstream)
+
 - CPU
     - CPU usage
     - CPU usage per core (1m and 5s)
@@ -90,6 +98,9 @@ You can tune the following macros, which are used by some triggers:
         - Detected by severity level
         - Detected by signature or anomaly
 
+- Interface-based Shaping (Ingress and Egress)
+    - Allocated, Guaranteed, Maximum and Current Bandwidth
+    - Byte rate and Packet drops
 
 ### Triggers
 - CPU
@@ -103,6 +114,10 @@ You can tune the following macros, which are used by some triggers:
     - High ICMP ping loss
 
 ### Graphs
+- Network Interfaces
+    - Network traffic
+    - Estimated bandwidth
+
 - CPU
     - CPU usage
 
@@ -132,6 +147,9 @@ You can tune the following macros, which are used by some triggers:
 - IPS
     - All IPS metrics
 
+- Interface-based Shaping (Ingress and Egress)
+    - All metrics
+
 ### Host Screens
 - System Performance
     - CPU
@@ -145,7 +163,6 @@ You can tune the following macros, which are used by some triggers:
 - High Availability
     - All graph prototypes available
 
-
 ### Host Inventory
 This template will automatically populate the following host inventory fields:
 - Name
@@ -156,7 +173,6 @@ This template will automatically populate the following host inventory fields:
 - Software (Full details)
 - Contact
 - Location
-
 
 ## Feedback
 Please send your comments, requests for additional items and bug reports at [Issues](https://github.com/barbosm/fortinet-zabbix/issues).
@@ -173,7 +189,6 @@ Each items will almost always generate some automatic graphs, here's some sample
 - High Availability Screen
 ![High Availability 01](/static/ha_screen_01.png)
 ![High Availability 02](/static/ha_screen_02.png)
-
 
 ## Known Issues
 No support for VDOMs at this time

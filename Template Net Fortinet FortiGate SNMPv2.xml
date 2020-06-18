@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-05-07T14:21:03Z</date>
+    <date>2020-06-18T20:37:37Z</date>
     <groups>
         <group>
             <name>Templates/Network devices</name>
@@ -14,7 +14,7 @@
             <description>Zabbix Template for Fortinet FortiGate&#13;
 URL: https://github.com/barbosm/fortinet-zabbix&#13;
 Author: Michel Barbosa&#13;
-Version: 1.3&#13;
+Version: 1.4&#13;
 &#13;
 Exposes information obtained from the following MIBs (import is not required):&#13;
 - FORTINET-CORE-MIB&#13;
@@ -1054,6 +1054,504 @@ Current HA Sync status</description>
                     </graph_prototypes>
                 </discovery_rule>
                 <discovery_rule>
+                    <name>Interface-based Shaping (Egress) Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#CLASS_ID},1.3.6.1.4.1.12356.101.7.5.2.1.1.{$IF_ID1}]</snmp_oid>
+                    <key>fgIntfBcEntry.discovery</key>
+                    <delay>1h</delay>
+                    <description>FORTINET-FORTIGATE-MIB::fgIntfBcEntry&#13;
+&#13;
+A list of all class-levels with bandwidth usage and packet drop counter.&#13;
+An entry containing the Bandwidth Control statistics, packet drop counter of a given interface.&#13;
+&#13;
+The data collected by this discovery is the same found using:&#13;
+`diagnose netlink interface list wan1`</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Allocated Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.2.1.1.{$IF_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcAllocatedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcAllocatedBandwidth&#13;
+&#13;
+Allocated Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Byte Rate - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.2.1.5.{$IF_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcBytes.rate.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcBytes&#13;
+&#13;
+Bytes of a given inteface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>8</params>
+                                </step>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Current Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.2.1.4.{$IF_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcCurrentBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcCurrentBandwidth&#13;
+&#13;
+Current Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Packet Drop - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.2.1.6.{$IF_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcDrops.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcDrops&#13;
+&#13;
+Packet drop counter of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Guaranteed Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.2.1.2.{$IF_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcGuaranteedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcGuaranteedBandwidth&#13;
+&#13;
+Guaranteed Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Maximum Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.2.1.3.{$IF_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcMaxBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcMaxBandwidth&#13;
+&#13;
+Max Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Interface-based Shaping (Egress) Metrics - Class ID {#SNMPINDEX}</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcAllocatedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcBytes.rate.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcCurrentBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <color>F7941D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcGuaranteedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>4</sortorder>
+                                    <color>FC6EA3</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcMaxBandwidth.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>5</sortorder>
+                                    <color>6C59DC</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcDrops.[{$IF_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Interface-based Shaping (Ingress) Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#CLASS_ID},1.3.6.1.4.1.12356.101.7.5.3.1.1.{$IF_IN_ID1}]</snmp_oid>
+                    <key>fgIntfBcInEntry.discovery</key>
+                    <delay>1h</delay>
+                    <description>FORTINET-FORTIGATE-MIB::fgIntfBcInEntry&#13;
+&#13;
+A list of all class-levels with bandwidth usage and packet drop counter.&#13;
+An entry containing the Bandwidth Control statistics, packet drop counter of a given interface.&#13;
+&#13;
+For ingress bc use estimated-downstream-bandwidth and ingress-shaping-profile</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Ingress Allocated Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.3.1.1.{$IF_IN_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcInAllocatedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcInAllocatedBandwidth&#13;
+&#13;
+Allocated Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Ingress Byte Rate - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.3.1.5.{$IF_IN_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcInBytes.rate.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcInBytes&#13;
+&#13;
+Bytes of a given inteface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>8</params>
+                                </step>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Ingress Current Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.3.1.4.{$IF_IN_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcInCurrentBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcInCurrentBandwidth&#13;
+&#13;
+Current Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Ingress Packet drop - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.3.1.6.{$IF_IN_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcInDrops.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcInDrops&#13;
+&#13;
+Packet drop counter of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Ingress Guaranteed Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.3.1.2.{$IF_IN_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcInGuaranteedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcInGuaranteedBandwidth&#13;
+&#13;
+Guaranteed Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Ingress Maximum Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.5.3.1.3.{$IF_IN_ID1}.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfBcInMaxBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfBcInMaxBandwidth&#13;
+&#13;
+Max Bandwidth of a given interface and class-level.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface-based Shaping</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Interface-based Shaping (Ingress) Metrics - {#SNMPINDEX}</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcInAllocatedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcInBytes.rate.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcInCurrentBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <color>F7941D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcInGuaranteedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>4</sortorder>
+                                    <color>FC6EA3</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcInMaxBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>5</sortorder>
+                                    <color>6C59DC</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfBcInDrops.[{$IF_IN_ID1}.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>FortiGate Interfaces Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#IFNAME},1.3.6.1.2.1.31.1.1.1.1,{#IFALIAS},1.3.6.1.2.1.31.1.1.1.18]</snmp_oid>
+                    <key>fgIntfEntry.discovery</key>
+                    <delay>1h</delay>
+                    <description>FORTINET-FORTIGATE-MIB::fgIntfEntry&#13;
+&#13;
+Fortinet specific extensions to MIB-2 ifTable.&#13;
+&#13;
+Fortinet specific information about an ifEntry. This table augments the standard ifTable, so the same indexing is used.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Estimated downstream bandwidth</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.2.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfEntEstDownBandwidth.[{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfEntEstDownBandwidth&#13;
+&#13;
+Estimated maximum downstream bandwidth (Kbps). Used to estimate link utilization.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface {#IFNAME}({#IFALIAS})</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Estimated upstream bandwidth</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.2.1.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfEntEstUpBandwidth.[{#SNMPINDEX}]</key>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfEntEstUpBandwidth&#13;
+&#13;
+Estimated maximum upstream bandwidth (Kbps). Used to estimate link utilization.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface {#IFNAME}({#IFALIAS})</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Interface {#IFNAME}({#IFALIAS}): VDOM</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.7.2.1.1.1.{#SNMPINDEX}</snmp_oid>
+                            <key>fgIntfEntVdom.[{#SNMPINDEX}]</key>
+                            <delay>1h</delay>
+                            <description>FORTINET-FORTIGATE-MIB::fgIntfEntVdom&#13;
+&#13;
+The virtual domain the interface belongs to. This index corresponds to the index used by fgVdTable.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Interface {#IFNAME}({#IFALIAS})</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Estimated Bandwidth - {#IFNAME}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfEntEstDownBandwidth.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgIntfEntEstUpBandwidth.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
                     <name>CPU Cores Discovery</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
@@ -1431,12 +1929,6 @@ The available bandwidth in Mbps of outgoing traffic detected by a health-check o
                                     <name>SD-WAN</name>
                                 </application_prototype>
                             </application_prototypes>
-                            <trigger_prototypes>
-                                <trigger_prototype>
-                                    <expression>{min(1m)}&gt;250</expression>
-                                    <name>High latency for {#HC_NAME} (over 250ms)</name>
-                                </trigger_prototype>
-                            </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
                             <name>Packet Loss to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
@@ -1596,6 +2088,16 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                 <macro>
                     <macro>{$CPU.UTIL.CRIT}</macro>
                     <value>80</value>
+                </macro>
+                <macro>
+                    <macro>{$IF_ID1}</macro>
+                    <value>1</value>
+                    <description>IF ID where Egress Shaping is configured</description>
+                </macro>
+                <macro>
+                    <macro>{$IF_IN_ID1}</macro>
+                    <value>2</value>
+                    <description>IF ID where Ingress Shaping is configured</description>
                 </macro>
                 <macro>
                     <macro>{$MEMORY.UTIL.MAX}</macro>
