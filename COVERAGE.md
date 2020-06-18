@@ -3,7 +3,7 @@
 # Coverage Summary
 
     Full OID list: 1554
-    Coverage: 69 (4.44%)
+    Coverage: 84 (5.41%)
 
 # Coverage Detailed
 
@@ -69,6 +69,21 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgV
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgVWLHealthCheckLinkTable.fgVWLHealthCheckLinkTableEntry.fgVWLHealthCheckLinkPacketSend|1.3.6.1.4.1.12356.101.4.9.2.1.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgVWLHealthCheckLinkTable.fgVWLHealthCheckLinkTableEntry.fgVWLHealthCheckLinkPacketRecv|1.3.6.1.4.1.12356.101.4.9.2.1.8
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgVWLHealthCheckLink.fgVWLHealthCheckLinkTable.fgVWLHealthCheckLinkTableEntry.fgVWLHealthCheckLinkPacketLoss|1.3.6.1.4.1.12356.101.4.9.2.1.9
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfTables.fgIntfTable.fgIntfEntry.fgIntfEntVdom|1.3.6.1.4.1.12356.101.7.2.1.1.1
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfTables.fgIntfTable.fgIntfEntry.fgIntfEntEstUpBandwidth|1.3.6.1.4.1.12356.101.7.2.1.1.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfTables.fgIntfTable.fgIntfEntry.fgIntfEntEstDownBandwidth|1.3.6.1.4.1.12356.101.7.2.1.1.3
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcAllocatedBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.1
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcGuaranteedBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcMaxBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.3
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcCurrentBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.4
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcBytes|1.3.6.1.4.1.12356.101.7.5.2.1.5
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcDrops|1.3.6.1.4.1.12356.101.7.5.2.1.6
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInAllocatedBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.1
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInGuaranteedBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInMaxBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.3
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInCurrentBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.4
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInBytes|1.3.6.1.4.1.12356.101.7.5.3.1.5
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInDrops|1.3.6.1.4.1.12356.101.7.5.3.1.6
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsIntrusionsDetected|1.3.6.1.4.1.12356.101.9.2.1.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsIntrusionsBlocked|1.3.6.1.4.1.12356.101.9.2.1.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIps.fgIpsTables.fgIpsStatsTable.fgIpsStatsEntry.fgIpsCritSevDetections|1.3.6.1.4.1.12356.101.9.2.1.1.3
@@ -1512,9 +1527,6 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgMgmt.fgFmTrapPrefix.fgFmTrapIfC
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgMgmt.fgAdmin.fgAdminOptions.fgAdminIdleTimeout|1.3.6.1.4.1.12356.101.6.1.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgMgmt.fgAdmin.fgAdminOptions.fgAdminLcdProtection|1.3.6.1.4.1.12356.101.6.1.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgMgmt.fgAdmin.fgAdminTables.fgAdminTable.fgAdminEntry.fgAdminVdom|1.3.6.1.4.1.12356.101.6.1.2.1.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfTables.fgIntfTable.fgIntfEntry.fgIntfEntVdom|1.3.6.1.4.1.12356.101.7.2.1.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfTables.fgIntfTable.fgIntfEntry.fgIntfEntEstUpBandwidth|1.3.6.1.4.1.12356.101.7.2.1.1.2
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfTables.fgIntfTable.fgIntfEntry.fgIntfEntEstDownBandwidth|1.3.6.1.4.1.12356.101.7.2.1.1.3
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfVrrps.fgIntfVrrpCount|1.3.6.1.4.1.12356.101.7.3.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfVrrps.fgIntfVrrpTable.fgIntfVrrpEntry.fgIntfVrrpEntIndex|1.3.6.1.4.1.12356.101.7.3.2.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfVrrps.fgIntfVrrpTable.fgIntfVrrpEntry.fgIntfVrrpEntVrId|1.3.6.1.4.1.12356.101.7.3.2.1.2
@@ -1527,18 +1539,6 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfVlanHbs.fgIntfVlanHb
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfVlanHbs.fgIntfVlanHbTable.fgIntfVlanHbEntry.fgIntfVlanHbEntIfName|1.3.6.1.4.1.12356.101.7.4.2.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfVlanHbs.fgIntfVlanHbTable.fgIntfVlanHbEntry.fgIntfVlanHbEntSerial|1.3.6.1.4.1.12356.101.7.4.2.1.3
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfVlanHbs.fgIntfVlanHbTable.fgIntfVlanHbEntry.fgIntfVlanHbEntState|1.3.6.1.4.1.12356.101.7.4.2.1.4
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcAllocatedBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcGuaranteedBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.2
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcMaxBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.3
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcCurrentBandwidth|1.3.6.1.4.1.12356.101.7.5.2.1.4
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcBytes|1.3.6.1.4.1.12356.101.7.5.2.1.5
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcTable.fgIntfBcEntry.fgIntfBcDrops|1.3.6.1.4.1.12356.101.7.5.2.1.6
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInAllocatedBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInGuaranteedBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.2
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInMaxBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.3
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInCurrentBandwidth|1.3.6.1.4.1.12356.101.7.5.3.1.4
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInBytes|1.3.6.1.4.1.12356.101.7.5.3.1.5
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgIntf.fgIntfBcs.fgIntfBcInTable.fgIntfBcInEntry.fgIntfBcInDrops|1.3.6.1.4.1.12356.101.7.5.3.1.6
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgAntivirus.fgAvTables.fgAvStatsTable.fgAvStatsEntry.fgAvVirusDetected|1.3.6.1.4.1.12356.101.8.2.1.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgAntivirus.fgAvTables.fgAvStatsTable.fgAvStatsEntry.fgAvIMAPVirusBlocked|1.3.6.1.4.1.12356.101.8.2.1.1.10
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgAntivirus.fgAvTables.fgAvStatsTable.fgAvStatsEntry.fgAvFTPVirusDetected|1.3.6.1.4.1.12356.101.8.2.1.1.11
