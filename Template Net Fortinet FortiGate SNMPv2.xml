@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-06-18T20:37:37Z</date>
+    <date>2020-11-24T18:14:54Z</date>
     <groups>
         <group>
             <name>Templates/Network devices</name>
@@ -12,9 +12,9 @@
             <template>Template Net Fortinet FortiGate SNMPv2</template>
             <name>Template Net Fortinet FortiGate SNMPv2</name>
             <description>Zabbix Template for Fortinet FortiGate&#13;
-URL: https://github.com/barbosm/fortinet-zabbix&#13;
+URL: https://github.com/mbdraks/fortinet-zabbix&#13;
 Author: Michel Barbosa&#13;
-Version: 1.4&#13;
+Version: 1.5&#13;
 &#13;
 Exposes information obtained from the following MIBs (import is not required):&#13;
 - FORTINET-CORE-MIB&#13;
@@ -58,7 +58,13 @@ Exposes information obtained from the following MIBs (import is not required):&#
                     <name>Storage</name>
                 </application>
                 <application>
+                    <name>Virtual Domain</name>
+                </application>
+                <application>
                     <name>VPN</name>
+                </application>
+                <application>
+                    <name>Wireless</name>
                 </application>
             </applications>
             <items>
@@ -639,6 +645,125 @@ The number of IPsec VPN tunnels with at least one SA</description>
                     <applications>
                         <application>
                             <name>VPN</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Wireless Controller - Location</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.14.2.2.0</snmp_oid>
+                    <key>fgWcInfoLocation</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcInfoLocation&#13;
+&#13;
+Represents the location of an AC</description>
+                    <applications>
+                        <application>
+                            <name>Wireless</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Wireless Controller - Name</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.14.2.1.0</snmp_oid>
+                    <key>fgWcInfoName</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcInfoName&#13;
+&#13;
+Represents the name of an AC</description>
+                    <applications>
+                        <application>
+                            <name>Wireless</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Wireless Controller - Station Capacity</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.14.2.6.0</snmp_oid>
+                    <key>fgWcInfoStationCapacity</key>
+                    <delay>1h</delay>
+                    <history>7d</history>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcInfoStationCapacity&#13;
+&#13;
+Represents the maximum number of stations that can be supported on the AC.</description>
+                    <applications>
+                        <application>
+                            <name>Wireless</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Wireless Controller - Station Count</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.14.2.7.0</snmp_oid>
+                    <key>fgWcInfoStationCount</key>
+                    <history>7d</history>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcInfoStationCount&#13;
+&#13;
+Represents the number of stations that are accessing the wireless service&#13;
+provided by the AC.</description>
+                    <applications>
+                        <application>
+                            <name>Wireless</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Wireless Controller - WTP Capacity</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.14.2.3.0</snmp_oid>
+                    <key>fgWcInfoWtpCapacity</key>
+                    <delay>1h</delay>
+                    <history>7d</history>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcInfoWtpCapacity&#13;
+&#13;
+Represents the maximum number of WTPs that can be managed on the AC.</description>
+                    <applications>
+                        <application>
+                            <name>Wireless</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Wireless Controller - WTP Managed</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.14.2.4.0</snmp_oid>
+                    <key>fgWcInfoWtpManaged</key>
+                    <history>7d</history>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcInfoWtpManaged&#13;
+&#13;
+Represents the number of WTPs being managed on the AC.</description>
+                    <applications>
+                        <application>
+                            <name>Wireless</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Wireless Controller - WTP Sessions</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>1.3.6.1.4.1.12356.101.14.2.5.0</snmp_oid>
+                    <key>fgWcInfoWtpSessions</key>
+                    <history>7d</history>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcInfoWtpSessions&#13;
+&#13;
+Represents the number of WTPs that are connecting to the AC.</description>
+                    <applications>
+                        <application>
+                            <name>Wireless</name>
                         </application>
                     </applications>
                 </item>
@@ -1838,6 +1963,37 @@ The total number of packets transmitted by this processor&#13;
                     </graph_prototypes>
                 </discovery_rule>
                 <discovery_rule>
+                    <name>Virtual Domain Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#VDOM_ID},1.3.6.1.4.1.12356.101.3.2.1.1.1]</snmp_oid>
+                    <key>fgVdEntIndex.discovery</key>
+                    <delay>1h</delay>
+                    <lifetime>0</lifetime>
+                    <description>FORTINET-FORTIGATE-MIB::fgVdEntIndex&#13;
+&#13;
+Internal virtual domain index used to uniquely identify rows in this table. This index is also used by other tables referencing a virtual domain.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>VDOM #{#VDOM_ID} - Name</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.3.2.1.1.2.{#VDOM_ID}</snmp_oid>
+                            <key>fgVdEntName.[{#VDOM_ID}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgVdEntName&#13;
+&#13;
+The name of the virtual domain</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Virtual Domain</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
                     <name>SD-WAN Health Check Discovery</name>
                     <type>SNMPV2</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
@@ -2009,6 +2165,17 @@ Heatlth check state on a specific member link.</description>
                             <valuemap>
                                 <name>Alarm state</name>
                             </valuemap>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}=1</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}=0</recovery_expression>
+                                    <name>Health Check State Failed to {#HC_NAME} on member {#MEMBER_SEQ}</name>
+                                    <opdata>Status: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>HIGH</priority>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
                             <name>VDOM of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}</name>
@@ -2077,6 +2244,832 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                                     <item>
                                         <host>Template Net Fortinet FortiGate SNMPv2</host>
                                         <key>fgVWLHealthCheckLinkPacketSend[{#HC_NAME}.{#MEMBER_SEQ}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Wireless Discovery</name>
+                    <type>SNMPV2</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.12356.101.14.4.3.1.1]</snmp_oid>
+                    <key>fgWcWtpConfigWtpId.discovery</key>
+                    <delay>1h</delay>
+                    <lifetime>0</lifetime>
+                    <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpId&#13;
+&#13;
+Represents the unique identifier of a WTP.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Background Scan</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.12.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigRadioApScan.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioApScan&#13;
+&#13;
+Whether background scan is enabled on this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-CORE-MIB::FnBoolState</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Radio Tx Automatic Power Control</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigRadioAutoTxPowerControl.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioAutoTxPowerControl&#13;
+&#13;
+Whether radio automatic TX power control is enabled on this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-CORE-MIB::FnBoolState</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Radio Tx Automatic Power Control (High Limit)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.9.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigRadioAutoTxPowerHigh.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioAutoTxPowerHigh&#13;
+&#13;
+Represents the high limit of radio automatic TX power control configured for this WTP, in dBm.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Radio Tx Automatic Power Control (Low Limit)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigRadioAutoTxPowerLow.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioAutoTxPowerLow&#13;
+&#13;
+Represents the low limit of radio automatic TX power control configured for this WTP, in dBm.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Radio Band</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.11.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigRadioBand.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioBand&#13;
+&#13;
+Represents the radio band configured for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-FORTIGATE-MIB::FgWcWtpRadioBandType</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Radio Enabled</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigRadioEnable.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioEnable&#13;
+&#13;
+Whether radio is enabled for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-CORE-MIB::FnBoolState</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Radio Tx Power Level</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigRadioTxPowerLevel.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioTxPowerLevel&#13;
+&#13;
+Represents the radio TX power setting configured for this WTP, in percentage.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - VAPs (All)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.13.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigVapAll.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigVapAll&#13;
+&#13;
+Whether all VAPs are selected for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-CORE-MIB::FnBoolState</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - VAPs (List)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.14.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigVaps.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigVaps&#13;
+&#13;
+Represents a list of VAPs configured for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Administrative Status</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigWtpAdmin.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpAdmin&#13;
+&#13;
+Represents the administrative status of this WTP.&#13;
+&#13;
+discovered(1) - This WTP was discovered though discovery or join request messages.&#13;
+disable(2) - Controller is configured to not provide service to this WTP.&#13;
+enable(3) - Controller is configured to provide service to this WTP.&#13;
+other(0) - The administration state of the WTP is unknown.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpAdmin</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Serial Number</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.1.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigWtpId.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpId&#13;
+&#13;
+Represents the unique identifier of a WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Location</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigWtpLocation.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpLocation&#13;
+&#13;
+Represents the location of this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Name</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigWtpName[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpName&#13;
+&#13;
+Represents the name configured for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Profile</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.3.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpConfigWtpProfile.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpProfile&#13;
+&#13;
+Represents the WTP profile configured for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Status</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionConnectionState[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionConnectionState&#13;
+&#13;
+Represents the connection state of a WTP to AC.&#13;
+&#13;
+The following enumerated values are supported:&#13;
+&#13;
+offLine(1) - The WTP is not connected.&#13;
+onLine(2) - The WTP is connected.&#13;
+downloadingImage(3) - The WTP is downloading software image from the AC on joining.&#13;
+connectedImage(4) - The AC is pushing software image to the connected WTP.&#13;
+other(0) - The WTP connection state is unknown.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>FORTINET-FORTIGATE-MIB::fgWcWtpSessionConnectionState</name>
+                            </valuemap>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}=1</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}=2</recovery_expression>
+                                    <name>FortiAP {#SNMPVALUE} in {HOST.NAME} is DOWN</name>
+                                    <opdata>Status: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <expression>{last()}=3</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}=2</recovery_expression>
+                                    <name>FortiAP {#SNMPVALUE} is receiving firmware update from {HOST.NAME}</name>
+                                    <opdata>Status: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>INFO</priority>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <expression>{last()}=4</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}=2</recovery_expression>
+                                    <name>{HOST.NAME} is sending firmware to FortiAP {#SNMPVALUE}</name>
+                                    <opdata>Status: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>INFO</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Base MAC Address</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpBaseMacAddress.[{#SNMPVALUE}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpBaseMacAddress&#13;
+&#13;
+Represents the WTP's Base MAC Address, which MAY be assigned to the primary&#13;
+Ethernet interface.&#13;
+The instance of the object corresponds to the Base MAC Address sub-element&#13;
+in the CAPWAP protocol [RFC5415].</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Version (Bootloader)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.15.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpBootVersion.[{#SNMPVALUE}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpBootVersion&#13;
+&#13;
+Represents the boot loader version of a WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Byte Count Rate (Rx)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.18.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpByteRxCount.rate.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpByteRxCount&#13;
+&#13;
+Represents the number of bytes received by this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>8</params>
+                                </step>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Byte Count Rate (Tx)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.19.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpByteTxCount.rate.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <units>bps</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpByteTxCount&#13;
+&#13;
+Represents the number of bytes transmitted by this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>8</params>
+                                </step>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - CPU Usage</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.20.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpCpuUsage.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpCpuUsage&#13;
+&#13;
+Represents the current CPU usage of a WTP (percentage).</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{max(5m)}&lt;{$CPU.UTIL.CRIT}</recovery_expression>
+                                    <name>High CPU usage (over {$CPU.UTIL.CRIT}% for 5m) - FortiAP {#SNMPVALUE}</name>
+                                    <opdata>Current utilization: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>WARNING</priority>
+                                    <description>CPU utilization is too high. The system might be slow to respond.</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Uptime (Daemon)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.9.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpDaemonUpTime.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <units>uptime</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpDaemonUpTime&#13;
+&#13;
+Represents the time (in hundredths of a second) since the WTP daemon has been started.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>0.01</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Version (Hardware)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.13.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpHwVersion.[{#SNMPVALUE}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpHwVersion&#13;
+&#13;
+Represents the hardware version of a WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - IP Address</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpIpAddress.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpIpAddress&#13;
+&#13;
+Represents the IP address of a WTP that corresponds to the IP address in the IP packet header.&#13;
+&#13;
+The format of this IP address is determined by the corresponding instance of object gWcWtpWtpIpAddressType.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - IP Address Type</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpIpAddressType.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpIpAddressType&#13;
+&#13;
+Represents the IP address type of a WTP.&#13;
+Only ipv4(1) and ipv6(2) are supported by the object.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IF-MIB::InetAddressType</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Local IP Address</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpLocalIpAddress.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpLocalIpAddress&#13;
+&#13;
+Represents the local IP address of a WTP and models the CAPWAP Local IPv4 Address&#13;
+or CAPWAP Local IPv6 Address fields [RFC5415].&#13;
+If a Network Address Translation (NAT) device is present between WTP and AC, the value of&#13;
+fgWcWtpWtpLocalIpAddress will be different from the value of fgWcWtpWtpIpAddress.&#13;
+The format of this IP address is determined by the corresponding instance of object&#13;
+fgWcWtpSessionWtpLocalIpAddressType.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Local IP Address Type</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpLocalIpAddressType.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpLocalIpAddressType&#13;
+&#13;
+Represents the local IP address type of a WTP.&#13;
+Only ipv4(1) and ipv6(2) are supported by the object.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>IF-MIB::InetAddressType</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Memory Capacity</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.22.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpMemoryCapacity.[{#SNMPVALUE}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <units>B</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpMemoryCapacity&#13;
+&#13;
+Represents the total physical memory (RAM) installed (KB).</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1024</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Memory Usage</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.21.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpMemoryUsage.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpCpuUsage&#13;
+&#13;
+Represents the current memory usage of a WTP (percentage).</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{max(5m)}&lt;{$MEMORY.UTIL.MAX}</recovery_expression>
+                                    <name>High memory usage (over {$MEMORY.UTIL.MAX}% for 5m) - FortiAP {#SNMPVALUE}</name>
+                                    <opdata>Current utilization: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>WARNING</priority>
+                                    <description>The system is running out of free memory.</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Model Number</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.12.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpModelNumber.[{#SNMPVALUE}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpModelNumber&#13;
+&#13;
+Represents the model number of a WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Profile Name</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.11.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpProfileName.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpProfileName&#13;
+&#13;
+Represents the profile configured for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Region Code</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.16.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpRegionCode.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpRegionCode&#13;
+&#13;
+Represents the region code programmed for this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Uptime (Session)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpSessionUpTime.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <units>uptime</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpSessionUpTime&#13;
+&#13;
+Represents the time (in hundredths of a second) since the WTP connects to the AC.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>0.01</params>
+                                </step>
+                            </preprocessing>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{change()}&lt;0</expression>
+                                    <name>FortiAP {#SNMPVALUE} session with {HOST.NAME} has been restarted</name>
+                                    <opdata>Status: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>WARNING</priority>
+                                    <description>Session between FAP and FG was restarted. Ack to close.</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Connected Clients</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.17.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpStationCount.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpStationCount&#13;
+&#13;
+Represents the number of clients currently connected to this WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Version (Software)</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.14.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpSwVersion.[{#SNMPVALUE}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpSwVersion&#13;
+&#13;
+Represents the software version of a WTP.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>FortiAP {#SNMPVALUE} - Uptime</name>
+                            <type>SNMPV2</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <snmp_oid>1.3.6.1.4.1.12356.101.14.4.4.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>fgWcWtpSessionWtpUpTime.[{#SNMPVALUE}]</key>
+                            <history>7d</history>
+                            <units>uptime</units>
+                            <description>FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpUpTime&#13;
+&#13;
+Represents the time (in hundredths of a second) since the WTP boots.</description>
+                            <applications>
+                                <application>
+                                    <name>Wireless</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>0.01</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Wireless - FortiAP {#SNMPVALUE} Byte Count Rate (Tx/Rx)</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgWcWtpSessionWtpByteRxCount.rate.[{#SNMPVALUE}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>A54F10</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgWcWtpSessionWtpByteTxCount.rate.[{#SNMPVALUE}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Wireless - FortiAP {#SNMPVALUE} Clients</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgWcWtpSessionWtpStationCount.[{#SNMPVALUE}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Wireless - FortiAP {#SNMPVALUE} Health</name>
+                            <ymin_type_1>FIXED</ymin_type_1>
+                            <ymax_type_1>FIXED</ymax_type_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgWcWtpSessionWtpCpuUsage.[{#SNMPVALUE}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>2774A4</color>
+                                    <item>
+                                        <host>Template Net Fortinet FortiGate SNMPv2</host>
+                                        <key>fgWcWtpSessionWtpMemoryUsage.[{#SNMPVALUE}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -2733,6 +3726,82 @@ Virtual domain the link monitor entry exists in. This name corresponds to the fg
                 <mapping>
                     <value>1</value>
                     <newvalue>synchronized</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpAdmin</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>other</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>discovered</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>disable</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>enable</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>FORTINET-FORTIGATE-MIB::FgWcWtpRadioBandType</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>other</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>band2GHz</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>band5GHz</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>FORTINET-FORTIGATE-MIB::fgWcWtpSessionConnectionState</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>other</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>offline</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>online</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>downloading Image</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>connected Image</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>IF-MIB::InetAddressType</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>ipv4</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>ipv6</newvalue>
                 </mapping>
             </mappings>
         </value_map>

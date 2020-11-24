@@ -39,6 +39,8 @@ You can tune the following macros, which are used by some triggers:
 - SOC3 Processor
 - High Availability
 - Interface-based Shaping (Ingress and Egress)
+- Wireless (FortiAP)
+- Virtual Domain
 
 ### Items Collected
 - Network Interfaces
@@ -102,6 +104,20 @@ You can tune the following macros, which are used by some triggers:
     - Allocated, Guaranteed, Maximum and Current Bandwidth
     - Byte rate and Packet drops
 
+- Wireless
+    - Controller Location, Name
+    - Station Capacity/Count
+    - WTP (Wireless Termination Point/FortiAP) Capacity, Managed and Sessions
+    - FAP Serial Number (ID), Status, Admin Status, Base MAC Address, 
+    - Connected Clients, CPU/Memory Usage, Version (Bootloader, SW and HW)
+    - IP Address, IP Address Type, Local IP Address, Local IP Address Type
+    - Model Number, FAP Name, Profile Name, Uptime (Device, Daemon and Session)
+    - Capabilities Enabled (Background Scan, Automatic Power Control and Limits)
+    - Byte Count Rate (Tx/Rx)
+
+- Virtual Domain
+    - VDOM Name
+
 ### Triggers
 - CPU
     - High CPU usage
@@ -112,6 +128,14 @@ You can tune the following macros, which are used by some triggers:
 - ICMP
     - High ICMP ping response time
     - High ICMP ping loss
+
+- SD-WAN
+    - Health Check State Down
+
+- Wireless
+    - FortiAP is down / restarted
+    - Firmware updates
+    - High CPU/Memory Usage
 
 ### Graphs
 - Network Interfaces
@@ -150,6 +174,11 @@ You can tune the following macros, which are used by some triggers:
 - Interface-based Shaping (Ingress and Egress)
     - All metrics
 
+- Wireless
+    - Health (CPU / Memory)
+    - Clients
+    - Byte Count Rate (Tx/Rx)
+
 ### Host Screens
 - System Performance
     - CPU
@@ -175,7 +204,7 @@ This template will automatically populate the following host inventory fields:
 - Location
 
 ## Feedback
-Please send your comments, requests for additional items and bug reports at [Issues](https://github.com/barbosm/fortinet-zabbix/issues).
+Please send your comments, requests for additional items and bug reports at [Issues](https://github.com/mbdraks/fortinet-zabbix/issues).
 
 ## Additional Info
 Detailed OID coverage report is available at [Coverage](COVERAGE.md)
