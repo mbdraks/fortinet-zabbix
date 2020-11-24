@@ -3,7 +3,7 @@
 # Coverage Summary
 
     Full OID list: 1554
-    Coverage: 84 (5.41%)
+    Coverage: 128 (8.24%)
 
 # Coverage Detailed
 
@@ -38,6 +38,50 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgHighAvailability.fgHaTables.fgH
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgHighAvailability.fgHaTables.fgHaStatsTable.fgHaStatsEntry.fgHaStatsPktCount|1.3.6.1.4.1.12356.101.13.2.1.1.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgHighAvailability.fgHaTables.fgHaStatsTable.fgHaStatsEntry.fgHaStatsByteCount|1.3.6.1.4.1.12356.101.13.2.1.1.8
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgHighAvailability.fgHaTables.fgHaStatsTable.fgHaStatsEntry.fgHaStatsIdsCount|1.3.6.1.4.1.12356.101.13.2.1.1.9
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoName|1.3.6.1.4.1.12356.101.14.2.1
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoLocation|1.3.6.1.4.1.12356.101.14.2.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoWtpCapacity|1.3.6.1.4.1.12356.101.14.2.3
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoWtpManaged|1.3.6.1.4.1.12356.101.14.2.4
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoWtpSessions|1.3.6.1.4.1.12356.101.14.2.5
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoStationCapacity|1.3.6.1.4.1.12356.101.14.2.6
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoStationCount|1.3.6.1.4.1.12356.101.14.2.7
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpId|1.3.6.1.4.1.12356.101.14.4.3.1.1
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioTxPowerLevel|1.3.6.1.4.1.12356.101.14.4.3.1.10
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioBand|1.3.6.1.4.1.12356.101.14.4.3.1.11
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioApScan|1.3.6.1.4.1.12356.101.14.4.3.1.12
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigVapAll|1.3.6.1.4.1.12356.101.14.4.3.1.13
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigVaps|1.3.6.1.4.1.12356.101.14.4.3.1.14
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpAdmin|1.3.6.1.4.1.12356.101.14.4.3.1.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpName|1.3.6.1.4.1.12356.101.14.4.3.1.3
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpLocation|1.3.6.1.4.1.12356.101.14.4.3.1.4
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpProfile|1.3.6.1.4.1.12356.101.14.4.3.1.5
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioEnable|1.3.6.1.4.1.12356.101.14.4.3.1.6
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioAutoTxPowerControl|1.3.6.1.4.1.12356.101.14.4.3.1.7
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioAutoTxPowerLow|1.3.6.1.4.1.12356.101.14.4.3.1.8
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioAutoTxPowerHigh|1.3.6.1.4.1.12356.101.14.4.3.1.9
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpId|1.3.6.1.4.1.12356.101.14.4.4.1.1
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpSessionUpTime|1.3.6.1.4.1.12356.101.14.4.4.1.10
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpProfileName|1.3.6.1.4.1.12356.101.14.4.4.1.11
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpModelNumber|1.3.6.1.4.1.12356.101.14.4.4.1.12
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpHwVersion|1.3.6.1.4.1.12356.101.14.4.4.1.13
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpSwVersion|1.3.6.1.4.1.12356.101.14.4.4.1.14
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpBootVersion|1.3.6.1.4.1.12356.101.14.4.4.1.15
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpRegionCode|1.3.6.1.4.1.12356.101.14.4.4.1.16
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpStationCount|1.3.6.1.4.1.12356.101.14.4.4.1.17
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpByteRxCount|1.3.6.1.4.1.12356.101.14.4.4.1.18
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpByteTxCount|1.3.6.1.4.1.12356.101.14.4.4.1.19
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpIpAddressType|1.3.6.1.4.1.12356.101.14.4.4.1.2
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpCpuUsage|1.3.6.1.4.1.12356.101.14.4.4.1.20
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpMemoryUsage|1.3.6.1.4.1.12356.101.14.4.4.1.21
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpMemoryCapacity|1.3.6.1.4.1.12356.101.14.4.4.1.22
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpIpAddress|1.3.6.1.4.1.12356.101.14.4.4.1.3
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpLocalIpAddressType|1.3.6.1.4.1.12356.101.14.4.4.1.4
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpLocalIpAddress|1.3.6.1.4.1.12356.101.14.4.4.1.5
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpBaseMacAddress|1.3.6.1.4.1.12356.101.14.4.4.1.6
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionConnectionState|1.3.6.1.4.1.12356.101.14.4.4.1.7
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpUpTime|1.3.6.1.4.1.12356.101.14.4.4.1.8
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpDaemonUpTime|1.3.6.1.4.1.12356.101.14.4.4.1.9
+FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdTables.fgVdTable.fgVdEntry.fgVdEntName|1.3.6.1.4.1.12356.101.3.2.1.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSystemInfo.fgSysVersion|1.3.6.1.4.1.12356.101.4.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSystemInfo.fgSysMgmtVdom|1.3.6.1.4.1.12356.101.4.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgSystem.fgSystemInfo.fgSysUpTime|1.3.6.1.4.1.12356.101.4.1.20
@@ -1052,13 +1096,6 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVpn.fgVpnTables.fgVpnSslTunnelT
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVpn.fgVpnTables.fgVpnSslTunnelTable.fgVpnSslTunnelEntry.fgVpnSslTunnelUpTime|1.3.6.1.4.1.12356.101.12.2.4.1.6
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVpn.fgVpnTables.fgVpnSslTunnelTable.fgVpnSslTunnelEntry.fgVpnSslTunnelBytesIn|1.3.6.1.4.1.12356.101.12.2.4.1.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVpn.fgVpnTables.fgVpnSslTunnelTable.fgVpnSslTunnelEntry.fgVpnSslTunnelBytesOut|1.3.6.1.4.1.12356.101.12.2.4.1.8
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoName|1.3.6.1.4.1.12356.101.14.2.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoLocation|1.3.6.1.4.1.12356.101.14.2.2
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoWtpCapacity|1.3.6.1.4.1.12356.101.14.2.3
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoWtpManaged|1.3.6.1.4.1.12356.101.14.2.4
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoWtpSessions|1.3.6.1.4.1.12356.101.14.2.5
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoStationCapacity|1.3.6.1.4.1.12356.101.14.2.6
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcInfo.fgWcInfoStationCount|1.3.6.1.4.1.12356.101.14.2.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWlanTable.fgWcWlanEntry.fgWcWlanSsid|1.3.6.1.4.1.12356.101.14.3.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWlanTable.fgWcWlanEntry.fgWcWlanMeshBackhaul|1.3.6.1.4.1.12356.101.14.3.1.10
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWlanTable.fgWcWlanEntry.fgWcWlanStationCapacity|1.3.6.1.4.1.12356.101.14.3.1.11
@@ -1095,42 +1132,6 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpProfile
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpProfileRadioTable.fgWcWtpProfileRadioEntry.fgWcWtpProfileRadioFrequencyHandoff|1.3.6.1.4.1.12356.101.14.4.2.1.7
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpProfileRadioTable.fgWcWtpProfileRadioEntry.fgWcWtpProfileRadioApHandoff|1.3.6.1.4.1.12356.101.14.4.2.1.8
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpProfileRadioTable.fgWcWtpProfileRadioEntry.fgWcWtpProfileRadioBeaconInterval|1.3.6.1.4.1.12356.101.14.4.2.1.9
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpId|1.3.6.1.4.1.12356.101.14.4.3.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioTxPowerLevel|1.3.6.1.4.1.12356.101.14.4.3.1.10
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioBand|1.3.6.1.4.1.12356.101.14.4.3.1.11
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioApScan|1.3.6.1.4.1.12356.101.14.4.3.1.12
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigVapAll|1.3.6.1.4.1.12356.101.14.4.3.1.13
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigVaps|1.3.6.1.4.1.12356.101.14.4.3.1.14
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpAdmin|1.3.6.1.4.1.12356.101.14.4.3.1.2
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpName|1.3.6.1.4.1.12356.101.14.4.3.1.3
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpLocation|1.3.6.1.4.1.12356.101.14.4.3.1.4
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigWtpProfile|1.3.6.1.4.1.12356.101.14.4.3.1.5
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioEnable|1.3.6.1.4.1.12356.101.14.4.3.1.6
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioAutoTxPowerControl|1.3.6.1.4.1.12356.101.14.4.3.1.7
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioAutoTxPowerLow|1.3.6.1.4.1.12356.101.14.4.3.1.8
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpConfigTable.fgWcWtpConfigEntry.fgWcWtpConfigRadioAutoTxPowerHigh|1.3.6.1.4.1.12356.101.14.4.3.1.9
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpId|1.3.6.1.4.1.12356.101.14.4.4.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpSessionUpTime|1.3.6.1.4.1.12356.101.14.4.4.1.10
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpProfileName|1.3.6.1.4.1.12356.101.14.4.4.1.11
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpModelNumber|1.3.6.1.4.1.12356.101.14.4.4.1.12
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpHwVersion|1.3.6.1.4.1.12356.101.14.4.4.1.13
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpSwVersion|1.3.6.1.4.1.12356.101.14.4.4.1.14
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpBootVersion|1.3.6.1.4.1.12356.101.14.4.4.1.15
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpRegionCode|1.3.6.1.4.1.12356.101.14.4.4.1.16
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpStationCount|1.3.6.1.4.1.12356.101.14.4.4.1.17
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpByteRxCount|1.3.6.1.4.1.12356.101.14.4.4.1.18
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpByteTxCount|1.3.6.1.4.1.12356.101.14.4.4.1.19
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpIpAddressType|1.3.6.1.4.1.12356.101.14.4.4.1.2
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpCpuUsage|1.3.6.1.4.1.12356.101.14.4.4.1.20
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpMemoryUsage|1.3.6.1.4.1.12356.101.14.4.4.1.21
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpMemoryCapacity|1.3.6.1.4.1.12356.101.14.4.4.1.22
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpIpAddress|1.3.6.1.4.1.12356.101.14.4.4.1.3
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpLocalIpAddressType|1.3.6.1.4.1.12356.101.14.4.4.1.4
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpLocalIpAddress|1.3.6.1.4.1.12356.101.14.4.4.1.5
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpBaseMacAddress|1.3.6.1.4.1.12356.101.14.4.4.1.6
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionConnectionState|1.3.6.1.4.1.12356.101.14.4.4.1.7
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpUpTime|1.3.6.1.4.1.12356.101.14.4.4.1.8
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionTable.fgWcWtpSessionEntry.fgWcWtpSessionWtpDaemonUpTime|1.3.6.1.4.1.12356.101.14.4.4.1.9
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionRadioTable.fgWcWtpSessionRadioEntry.fgWcWtpSessionRadioWtpId|1.3.6.1.4.1.12356.101.14.4.5.1.1
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionRadioTable.fgWcWtpSessionRadioEntry.fgWcWtpSessionRadioRadioId|1.3.6.1.4.1.12356.101.14.4.5.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgWc.fgWcWtpTables.fgWcWtpSessionRadioTable.fgWcWtpSessionRadioEntry.fgWcWtpSessionRadioMode|1.3.6.1.4.1.12356.101.14.4.5.1.3
@@ -1317,7 +1318,6 @@ FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdInfo.fgVdNumb
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdInfo.fgVdMaxVdoms|1.3.6.1.4.1.12356.101.3.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdInfo.fgVdEnabled|1.3.6.1.4.1.12356.101.3.1.3
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdTables.fgVdTable.fgVdEntry.fgVdEntIndex|1.3.6.1.4.1.12356.101.3.2.1.1.1
-FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdTables.fgVdTable.fgVdEntry.fgVdEntName|1.3.6.1.4.1.12356.101.3.2.1.1.2
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdTables.fgVdTable.fgVdEntry.fgVdEntOpMode|1.3.6.1.4.1.12356.101.3.2.1.1.3
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdTables.fgVdTable.fgVdEntry.fgVdEntHaState|1.3.6.1.4.1.12356.101.3.2.1.1.4
 FORTINET-FORTIGATE-MIB:fortinet.fnFortiGateMib.fgVirtualDomain.fgVdTables.fgVdTable.fgVdEntry.fgVdEntCpuUsage|1.3.6.1.4.1.12356.101.3.2.1.1.5
