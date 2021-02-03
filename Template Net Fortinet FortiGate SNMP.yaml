@@ -1,0 +1,3079 @@
+zabbix_export:
+  version: '5.2'
+  date: '2021-02-03T00:36:34Z'
+  groups:
+    -
+      name: 'Templates/Network devices'
+  templates:
+    -
+      template: 'Template Net Fortinet FortiGate SNMP'
+      name: 'Template Net Fortinet FortiGate SNMP'
+      description: |
+        Zabbix Template for Fortinet FortiGate
+        URL: https://github.com/mbdraks/fortinet-zabbix
+        Author: Michel Barbosa
+        Version: 2.0
+        
+        Exposes information obtained from the following MIBs (import is not required):
+        - FORTINET-CORE-MIB
+        - FORTINET-FORTIGATE-MIB
+      templates:
+        -
+          name: 'EtherLike-MIB SNMP'
+        -
+          name: 'Generic SNMP'
+        -
+          name: 'Interfaces SNMP'
+      groups:
+        -
+          name: 'Templates/Network devices'
+      applications:
+        -
+          name: CPU
+        -
+          name: 'High Availability'
+        -
+          name: Inventory
+        -
+          name: IPS
+        -
+          name: Memory
+        -
+          name: Session
+        -
+          name: Storage
+        -
+          name: 'Virtual Domain'
+        -
+          name: VPN
+        -
+          name: Wireless
+      items:
+        -
+          name: 'Logical Description'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.2.1.47.1.2.1.1.2.1
+          key: entLogicalDescr
+          delay: 1h
+          trends: '0'
+          value_type: CHAR
+          description: |
+            ENTITY-MIB::entLogicalDescr
+            
+            A textual description of the logical entity.  This object
+            should contain a string which identifies the manufacturer's
+            name for the logical entity, and should be set to a distinct
+            value for each version of the logical entity.
+          inventory_link: SOFTWARE_FULL
+          applications:
+            -
+              name: Inventory
+        -
+          name: 'Physical Description'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.2.1.47.1.1.1.1.2.1
+          key: entPhysicalDesc
+          delay: 1h
+          trends: '0'
+          value_type: CHAR
+          description: |
+            ENTITY-MIB::entPhysicalDescr
+            
+            A textual description of physical entity.  This object
+            should contain a string which identifies the manufacturer's
+            name for the physical entity, and should be set to a
+            distinct value for each version or model of the physical
+            entity.
+          inventory_link: HARDWARE_FULL
+          applications:
+            -
+              name: Inventory
+        -
+          name: 'HA Config Sync'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.13.1.5.0
+          key: fgHaAutoSync
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaAutoSync
+            
+            Configuration of an automatic configuration
+            synchronization (enabled or disabled)
+          applications:
+            -
+              name: 'High Availability'
+          valuemap:
+            name: 'FORTINET-CORE-MIB::FnBoolState'
+        -
+          name: 'HA Cluster Group ID'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.13.1.2.0
+          key: fgHaGroupId
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaSystemMode
+            
+            HA cluster group ID device is configured for
+          applications:
+            -
+              name: 'High Availability'
+        -
+          name: 'HA Cluster Name'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.13.1.7.0
+          key: fgHaGroupName
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaGroupName
+            
+            HA cluster group name
+          applications:
+            -
+              name: 'High Availability'
+        -
+          name: 'HA Cluster Master Override'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.13.1.4.0
+          key: fgHaOverride
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaOverride
+            
+            Status of a master override flag
+          applications:
+            -
+              name: 'High Availability'
+          valuemap:
+            name: 'FORTINET-CORE-MIB::FnBoolState'
+        -
+          name: 'HA Cluster Priority'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.13.1.3.0
+          key: fgHaPriority
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaPriority
+            
+            HA clustering priority of the device (default = 128)
+          applications:
+            -
+              name: 'High Availability'
+        -
+          name: 'HA Load-balancing Schedule'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.13.1.6.0
+          key: fgHaSchedule
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaSchedule
+            
+            Load-balancing schedule of cluster (in A-A mode)
+          applications:
+            -
+              name: 'High Availability'
+          valuemap:
+            name: 'FORTINET-FORTIGATE-MIB::FgHaLBSchedule'
+        -
+          name: 'HA Mode'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.13.1.1.0
+          key: fgHaSystemMode
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaSystemMode
+            
+            High-availability mode (Standalone, A-A or A-P)
+          applications:
+            -
+              name: 'High Availability'
+          valuemap:
+            name: 'FORTINET-FORTIGATE-MIB::FgHaMode'
+        -
+          name: 'Intrusions detected - Anomaly based'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.9.1
+          key: fgIpsAnomalyDetections
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsAnomalyDetections
+            
+            Number of intrusions detected by signature
+            since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions detected - Critical'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.3.1
+          key: fgIpsCritSevDetections
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsCritSevDetections
+            
+            Number of critical severity intrusions
+            detected since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions detected - High'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.4.1
+          key: fgIpsHighSevDetections
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsHighSevDetections
+            
+            Number of high severity intrusions 
+            detected since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions detected - Info'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.7.1
+          key: fgIpsInfoSevDetections
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsInfoSevDetections
+            
+            Number of informational severity intrusions
+            detected since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions blocked'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.2.1
+          key: fgIpsIntrusionsBlocked
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsIntrusionsBlocked
+            
+            Number of intrusions blocked since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions detected'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.1.1
+          key: fgIpsIntrusionsDetected
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsIntrusionsDetected
+            
+            Number of intrusions detected since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions detected - Low'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.6.1
+          key: fgIpsLowSevDetections
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsLowSevDetections
+            
+            Number of low severity intrusions 
+            detected since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions detected - Medium'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.5.1
+          key: fgIpsMedSevDetections
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsMedSevDetections
+            
+            Number of medium severity intrusions 
+            detected since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'Intrusions detected - Signature based'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.9.2.1.1.8.1
+          key: fgIpsSignatureDetections
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIpsSignatureDetections
+            
+            Number of intrusions detected by signature
+            since start-up in this virtual domain
+          applications:
+            -
+              name: IPS
+        -
+          name: 'CPU usage'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.3.0
+          key: fgSysCpuUsage
+          units: '%'
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysCpuUsage
+            
+            Current CPU usage (percentage)
+          applications:
+            -
+              name: CPU
+          triggers:
+            -
+              expression: '{min(5m)}>{$CPU.UTIL.CRIT}'
+              name: 'High CPU usage (over {$CPU.UTIL.CRIT}% for 5m)'
+              opdata: 'Current utilization: {ITEM.LASTVALUE1}'
+              priority: WARNING
+              description: 'CPU utilization is too high. The system might be slow to respond.'
+        -
+          name: 'Hard Disk Capacity'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.7.0
+          key: fgSysDiskCapacity
+          delay: 1h
+          units: B
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysDiskCapacity
+            
+            Total hard disk capacity (MB), if disk is present
+          applications:
+            -
+              name: Storage
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '1024'
+            -
+              type: MULTIPLIER
+              parameters:
+                - '1024'
+        -
+          name: 'Hard Disk Usage'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.6.0
+          key: fgSysDiskUsage
+          units: B
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysDiskUsage
+            
+            Current hard disk usage (MB), if disk is present
+          applications:
+            -
+              name: Storage
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '1024'
+            -
+              type: MULTIPLIER
+              parameters:
+                - '1024'
+        -
+          name: 'Hard Disk Usage Rate'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.6.0
+          key: fgSysDiskUsage.Rate
+          units: B
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysDiskUsage
+            
+            Current hard disk usage (MB), if disk is present
+          applications:
+            -
+              name: Storage
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '1024'
+            -
+              type: MULTIPLIER
+              parameters:
+                - '1024'
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+        -
+          name: 'Memory usage'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.4.0
+          key: fgSysMemUsage
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysMemUsage
+            
+            Current memory utilization (percentage)
+          applications:
+            -
+              name: Memory
+          triggers:
+            -
+              expression: '{min(5m)}>{$MEMORY.UTIL.MAX}'
+              name: 'High memory usage ( >{$MEMORY.UTIL.MAX}% for 5m)'
+              priority: WARNING
+              description: 'The system is running out of free memory.'
+        -
+          name: 'IPv4 Active sessions'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.8.0
+          key: fgSysSesCount
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysSesCount
+            
+            Number of active sessions on the device
+          applications:
+            -
+              name: Session
+        -
+          name: 'FortiGate Uptime'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.20.0
+          key: fgSysUpTime
+          history: 2w
+          trends: '0'
+          units: uptime
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysUpTime
+            
+            The 64bit time (in hundredths of a second) since the network management portion of the system was last re-initialized.
+          applications:
+            -
+              name: Status
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '0.01'
+        -
+          name: 'Firmware Version'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.1.0
+          key: fgSysVersion
+          delay: 1h
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysVersion
+            
+            Firmware version of the device
+          inventory_link: OS_SHORT
+          applications:
+            -
+              name: Inventory
+        -
+          name: 'IPS Database Version'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.2.2.0
+          key: fgSysVersionIps
+          delay: 1h
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysVersionIps
+            
+            IPS signature database version installed on the device
+          applications:
+            -
+              name: IPS
+        -
+          name: 'IPS Database Version - Extended'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.2.4.0
+          key: fgSysVersionIpsEt
+          delay: 1h
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysVersionIpsEt
+            
+            IPS signature extended database version installed on the device
+          applications:
+            -
+              name: IPS
+        -
+          name: 'SSL VPN state'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.12.2.3.1.1.1
+          key: fgVpnSslState
+          description: |
+            FORTINET-FORTIGATE-MIB::fgVpnSslState
+            
+            Whether SSL-VPN is enabled on this virtual domain
+          applications:
+            -
+              name: VPN
+          valuemap:
+            name: 'FORTINET-CORE-MIB::FnBoolState'
+        -
+          name: 'Active SSL VPN users'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.12.2.3.1.2.1
+          key: fgVpnSslStatsLoginUsers
+          description: |
+            FORTINET-FORTIGATE-MIB::fgVpnSslStatsLoginUsers
+            
+            The current number of users logged in through SSL-VPN tunnels in the virtual domain
+          applications:
+            -
+              name: VPN
+        -
+          name: 'Active IPsec VPN tunnels'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.12.1.1.0
+          key: fgVpnTunnelUpCount
+          description: |
+            FORTINET-FORTIGATE-MIB::fgVpnTunnelUpCount
+            
+            The number of IPsec VPN tunnels with at least one SA
+          applications:
+            -
+              name: VPN
+        -
+          name: 'Wireless Controller - Location'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.14.2.2.0
+          key: fgWcInfoLocation
+          history: 7d
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcInfoLocation
+            
+            Represents the location of an AC
+          applications:
+            -
+              name: Wireless
+        -
+          name: 'Wireless Controller - Name'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.14.2.1.0
+          key: fgWcInfoName
+          history: 7d
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcInfoName
+            
+            Represents the name of an AC
+          applications:
+            -
+              name: Wireless
+        -
+          name: 'Wireless Controller - Station Capacity'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.14.2.6.0
+          key: fgWcInfoStationCapacity
+          delay: 1h
+          history: 7d
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcInfoStationCapacity
+            
+            Represents the maximum number of stations that can be supported on the AC.
+          applications:
+            -
+              name: Wireless
+        -
+          name: 'Wireless Controller - Station Count'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.14.2.7.0
+          key: fgWcInfoStationCount
+          history: 7d
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcInfoStationCount
+            
+            Represents the number of stations that are accessing the wireless service
+            provided by the AC.
+          applications:
+            -
+              name: Wireless
+        -
+          name: 'Wireless Controller - WTP Capacity'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.14.2.3.0
+          key: fgWcInfoWtpCapacity
+          delay: 1h
+          history: 7d
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcInfoWtpCapacity
+            
+            Represents the maximum number of WTPs that can be managed on the AC.
+          applications:
+            -
+              name: Wireless
+        -
+          name: 'Wireless Controller - WTP Managed'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.14.2.4.0
+          key: fgWcInfoWtpManaged
+          history: 7d
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcInfoWtpManaged
+            
+            Represents the number of WTPs being managed on the AC.
+          applications:
+            -
+              name: Wireless
+        -
+          name: 'Wireless Controller - WTP Sessions'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.14.2.5.0
+          key: fgWcInfoWtpSessions
+          history: 7d
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcInfoWtpSessions
+            
+            Represents the number of WTPs that are connecting to the AC.
+          applications:
+            -
+              name: Wireless
+        -
+          name: 'Device Serial Number'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.100.1.1.1.0
+          key: fnSysSerial
+          delay: 1h
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-CORE-MIB::fnSysSerial
+            
+            Device serial number. This is the same serial number as given
+            in the ENTITY-MIB tables for the base entity.
+            
+            If in HA returns the master SN only.
+          inventory_link: SERIALNO_A
+          applications:
+            -
+              name: Inventory
+        -
+          name: 'Operating System'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.12356.101.4.1.1.0
+          key: 'system.sw.os[sysDescr.0]'
+          delay: 1h
+          history: 2w
+          trends: '0'
+          value_type: CHAR
+          description: |
+            FORTINET-FORTIGATE-MIB::fgSysVersion
+            
+            Firmware version of the device
+          inventory_link: OS
+          applications:
+            -
+              name: Inventory
+      discovery_rules:
+        -
+          name: 'High Availability Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#HA_ID},1.3.6.1.4.1.12356.101.13.2.1.1.1,{#HA_SN},1.3.6.1.4.1.12356.101.13.2.1.1.2]'
+          key: fgHaStatsTable.discovery
+          delay: 1h
+          description: |
+            FORTINET-FORTIGATE-MIB::fgHaStatsTable
+            
+            Some useful statistics for all members of a cluster. This table is also available in standalone mode.
+          item_prototypes:
+            -
+              name: 'HA Cluster Member {#HA_ID} - AV Events Rate'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.10.{#HA_ID}'
+              key: 'fgHaStatsAvCount.rate.[{#HA_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsAvCount
+                
+                Number of anti-virus events triggered on the specified cluster member since start-up
+              applications:
+                -
+                  name: 'High Availability'
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'HA Cluster Member {#HA_ID} - Bytes Processed Rate'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.8.{#HA_ID}'
+              key: 'fgHaStatsByteCount.rate.[{#HA_ID}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsByteCount
+                
+                Number of bytes processed by the specified cluster member since start-up
+              applications:
+                -
+                  name: 'High Availability'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '8'
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'HA Cluster Member {#HA_ID} - CPU Usage'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.3.{#HA_ID}'
+              key: 'fgHaStatsCpuUsage.[{#HA_ID}]'
+              units: '%'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsCpuUsage
+                
+                CPU usage of the specified cluster member (percentage)
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Global Checksum'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.15.{#HA_ID}'
+              key: 'fgHaStatsGlobalChecksum.[{#HA_ID}]'
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsGlobalChecksum
+                
+                Current HA global checksum value
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Hostname'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.11.{#HA_ID}'
+              key: 'fgHaStatsHostname.[{#HA_ID}]'
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsHostname
+                
+                Host name of the specified cluster member
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - IPS Events Rate'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.9.{#HA_ID}'
+              key: 'fgHaStatsIdsCount.rate.[{#HA_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsIdsCount
+                
+                Number of IDS/IPS events triggered on the specified cluster member since start-up
+              applications:
+                -
+                  name: 'High Availability'
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'HA Cluster Member {#HA_ID} - Master SN'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.16.{#HA_ID}'
+              key: 'fgHaStatsMasterSerial.[{#HA_ID}]'
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsMasterSerial
+                
+                Serial number of master during the last synch attempt (successful of not)
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Memory Usage'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.4.{#HA_ID}'
+              key: 'fgHaStatsMemUsage.[{#HA_ID}]'
+              units: '%'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsMemUsage
+                
+                Memory usage of the specified cluster member (percentage)
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Network Bandwidth Usage'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.5.{#HA_ID}'
+              key: 'fgHaStatsNetUsage.[{#HA_ID}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsNetUsage
+                
+                Network bandwidth usage of specified cluster member (kbps)
+              applications:
+                -
+                  name: 'High Availability'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1024'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Packets Processed Rate'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.7.{#HA_ID}'
+              key: 'fgHaStatsPktCount.rate.[{#HA_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsPktCount
+                
+                Number of packets processed by the specified cluster member since start-up
+              applications:
+                -
+                  name: 'High Availability'
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'HA Cluster Member {#HA_ID} - Serial Number'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.2.{#HA_ID}'
+              key: 'fgHaStatsSerial.[{#HA_ID}]'
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsSerial
+                
+                Serial number of the HA cluster member
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Concurrent Connections'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.6.{#HA_ID}'
+              key: 'fgHaStatsSesCount.[{#HA_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsSesCount
+                
+                Current session count of specified cluster member
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Sync Success Time'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.13.{#HA_ID}'
+              key: 'fgHaStatsSyncDatimeSucc.[{#HA_ID}]'
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsSyncDatimeSucc
+                
+                Date and time of last successful sync
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Sync Failed Time'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.14.{#HA_ID}'
+              key: 'fgHaStatsSyncDatimeUnsucc.[{#HA_ID}]'
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsSyncDatimeUnsucc
+                
+                Date and time of last unsuccessful sync
+              applications:
+                -
+                  name: 'High Availability'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Sync Status'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.13.2.1.1.12.{#HA_ID}'
+              key: 'fgHaStatsSyncStatus.[{#HA_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgHaStatsSyncStatus
+                
+                Current HA Sync status
+              applications:
+                -
+                  name: 'High Availability'
+              valuemap:
+                name: 'FORTINET-FORTIGATE-MIB::FgHaStatsSyncStatusType'
+          graph_prototypes:
+            -
+              name: 'HA Cluster Member {#HA_ID} - Concurrent Connections'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgHaStatsSesCount.[{#HA_ID}]'
+            -
+              name: 'HA Cluster Member {#HA_ID} - CPU Usage'
+              ymin_type_1: FIXED
+              ymax_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgHaStatsCpuUsage.[{#HA_ID}]'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Memory Usage'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgHaStatsMemUsage.[{#HA_ID}]'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Network Bandwidth Usage'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgHaStatsNetUsage.[{#HA_ID}]'
+            -
+              name: 'HA Cluster Member {#HA_ID} - Security Events Rate'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgHaStatsAvCount.rate.[{#HA_ID}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgHaStatsIdsCount.rate.[{#HA_ID}]'
+        -
+          name: 'Interface-based Shaping (Egress) Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#CLASS_ID},1.3.6.1.4.1.12356.101.7.5.2.1.1.{$IF_ID1}]'
+          key: fgIntfBcEntry.discovery
+          delay: 1h
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIntfBcEntry
+            
+            A list of all class-levels with bandwidth usage and packet drop counter.
+            An entry containing the Bandwidth Control statistics, packet drop counter of a given interface.
+            
+            The data collected by this discovery is the same found using:
+            `diagnose netlink interface list wan1`
+          item_prototypes:
+            -
+              name: 'Allocated Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.2.1.1.{$IF_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcAllocatedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcAllocatedBandwidth
+                
+                Allocated Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Byte Rate - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.2.1.5.{$IF_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcBytes.rate.[{$IF_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcBytes
+                
+                Bytes of a given inteface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '8'
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'Current Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.2.1.4.{$IF_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcCurrentBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcCurrentBandwidth
+                
+                Current Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Packet Drop - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.2.1.6.{$IF_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcDrops.[{$IF_ID1}.{#SNMPINDEX}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcDrops
+                
+                Packet drop counter of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+            -
+              name: 'Guaranteed Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.2.1.2.{$IF_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcGuaranteedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcGuaranteedBandwidth
+                
+                Guaranteed Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Maximum Bandwidth - Interface ID {$IF_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.2.1.3.{$IF_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcMaxBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcMaxBandwidth
+                
+                Max Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+          graph_prototypes:
+            -
+              name: 'Interface-based Shaping (Egress) Metrics - Class ID {#SNMPINDEX}'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcAllocatedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcBytes.rate.[{$IF_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '2'
+                  color: 2774A4
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcCurrentBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '3'
+                  color: F7941D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcGuaranteedBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '4'
+                  color: FC6EA3
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcMaxBandwidth.[{$IF_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '5'
+                  color: 6C59DC
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcDrops.[{$IF_ID1}.{#SNMPINDEX}]'
+        -
+          name: 'Interface-based Shaping (Ingress) Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#CLASS_ID},1.3.6.1.4.1.12356.101.7.5.3.1.1.{$IF_IN_ID1}]'
+          key: fgIntfBcInEntry.discovery
+          delay: 1h
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIntfBcInEntry
+            
+            A list of all class-levels with bandwidth usage and packet drop counter.
+            An entry containing the Bandwidth Control statistics, packet drop counter of a given interface.
+            
+            For ingress bc use estimated-downstream-bandwidth and ingress-shaping-profile
+          item_prototypes:
+            -
+              name: 'Ingress Allocated Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.3.1.1.{$IF_IN_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcInAllocatedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcInAllocatedBandwidth
+                
+                Allocated Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Ingress Byte Rate - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.3.1.5.{$IF_IN_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcInBytes.rate.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcInBytes
+                
+                Bytes of a given inteface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '8'
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'Ingress Current Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.3.1.4.{$IF_IN_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcInCurrentBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcInCurrentBandwidth
+                
+                Current Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Ingress Packet drop - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.3.1.6.{$IF_IN_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcInDrops.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcInDrops
+                
+                Packet drop counter of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+            -
+              name: 'Ingress Guaranteed Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.3.1.2.{$IF_IN_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcInGuaranteedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcInGuaranteedBandwidth
+                
+                Guaranteed Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Ingress Maximum Bandwidth - Interface ID {$IF_IN_ID1} - Class ID {#SNMPINDEX}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.5.3.1.3.{$IF_IN_ID1}.{#SNMPINDEX}'
+              key: 'fgIntfBcInMaxBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfBcInMaxBandwidth
+                
+                Max Bandwidth of a given interface and class-level.
+              application_prototypes:
+                -
+                  name: 'Interface-based Shaping'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+          graph_prototypes:
+            -
+              name: 'Interface-based Shaping (Ingress) Metrics - {#SNMPINDEX}'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcInAllocatedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcInBytes.rate.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '2'
+                  color: 2774A4
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcInCurrentBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '3'
+                  color: F7941D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcInGuaranteedBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '4'
+                  color: FC6EA3
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcInMaxBandwidth.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+                -
+                  sortorder: '5'
+                  color: 6C59DC
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfBcInDrops.[{$IF_IN_ID1}.{#SNMPINDEX}]'
+        -
+          name: 'FortiGate Interfaces Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#IFNAME},1.3.6.1.2.1.31.1.1.1.1,{#IFALIAS},1.3.6.1.2.1.31.1.1.1.18]'
+          key: fgIntfEntry.discovery
+          delay: 1h
+          description: |
+            FORTINET-FORTIGATE-MIB::fgIntfEntry
+            
+            Fortinet specific extensions to MIB-2 ifTable.
+            
+            Fortinet specific information about an ifEntry. This table augments the standard ifTable, so the same indexing is used.
+          item_prototypes:
+            -
+              name: 'Interface {#IFNAME}({#IFALIAS}): Estimated downstream bandwidth'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.2.1.1.3.{#SNMPINDEX}'
+              key: 'fgIntfEntEstDownBandwidth.[{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfEntEstDownBandwidth
+                
+                Estimated maximum downstream bandwidth (Kbps). Used to estimate link utilization.
+              application_prototypes:
+                -
+                  name: 'Interface {#IFNAME}({#IFALIAS})'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Interface {#IFNAME}({#IFALIAS}): Estimated upstream bandwidth'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.2.1.1.2.{#SNMPINDEX}'
+              key: 'fgIntfEntEstUpBandwidth.[{#SNMPINDEX}]'
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfEntEstUpBandwidth
+                
+                Estimated maximum upstream bandwidth (Kbps). Used to estimate link utilization.
+              application_prototypes:
+                -
+                  name: 'Interface {#IFNAME}({#IFALIAS})'
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1000'
+            -
+              name: 'Interface {#IFNAME}({#IFALIAS}): VDOM'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.7.2.1.1.1.{#SNMPINDEX}'
+              key: 'fgIntfEntVdom.[{#SNMPINDEX}]'
+              delay: 1h
+              description: |
+                FORTINET-FORTIGATE-MIB::fgIntfEntVdom
+                
+                The virtual domain the interface belongs to. This index corresponds to the index used by fgVdTable.
+              application_prototypes:
+                -
+                  name: 'Interface {#IFNAME}({#IFALIAS})'
+          graph_prototypes:
+            -
+              name: 'Estimated Bandwidth - {#IFNAME}'
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfEntEstDownBandwidth.[{#SNMPINDEX}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgIntfEntEstUpBandwidth.[{#SNMPINDEX}]'
+        -
+          name: 'CPU Cores Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#CPU_ID},1.3.6.1.4.1.12356.101.4.4.2.1.1,{#CPU_TYPE},1.3.6.1.4.1.12356.101.4.4.2.1.4]'
+          key: fgProcessorEntIndex.discovery
+          delay: 1h
+          filter:
+            conditions:
+              -
+                macro: '{#CPU_TYPE}'
+                value: 12356.101.4.4.3.1
+                formulaid: A
+              -
+                macro: '{#CPU_TYPE}'
+                value: 12356.101.4.4.3.2
+                formulaid: B
+              -
+                macro: '{#CPU_TYPE}'
+                value: 12356.101.4.4.3.3
+                formulaid: C
+          description: |
+            FORTINET-FORTIGATE-MIB::fgProcessorEntIndex
+            
+            A unique identifier within the fgProcessorTable
+          item_prototypes:
+            -
+              name: 'Average Usage of System Process over 1min per Core #{#CPU_ID}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.10.{#CPU_ID}'
+              key: 'fgProcessorSysUsage.[{#CPU_ID}]'
+              units: '%'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorSysUsage
+                
+                The processor's CPU system space usage, which is an average
+                calculated over the last minute.
+                (only valid for processors types that support this statistic).
+              applications:
+                -
+                  name: CPU
+            -
+              name: 'Core #{#CPU_ID} Processor Type'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.4.{#CPU_ID}'
+              key: 'fgProcessorType.[{#CPU_ID}]'
+              delay: 1h
+              trends: '0'
+              value_type: TEXT
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorType
+                
+                An indication of the type of the processor. Types are defined in fgProcessorTypes.
+              applications:
+                -
+                  name: CPU
+            -
+              name: 'Average Usage over 1min per Core #{#CPU_ID}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.2.{#CPU_ID}'
+              key: 'fgProcessorUsage.[{#CPU_ID}]'
+              units: '%'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorUsage
+                
+                The processor's CPU usage (percentage), which is an average
+                calculated over the last minute.
+                (only valid for processors types that support this statistic).
+              applications:
+                -
+                  name: CPU
+            -
+              name: 'Average Usage over 5sec per Core #{#CPU_ID}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.3.{#CPU_ID}'
+              key: 'fgProcessorUsage5sec.[{#CPU_ID}]'
+              delay: 5s
+              units: '%'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorUsage5sec
+                
+                The processor's CPU usage (percentage), which is an average
+                calculated over the last 5 sec.
+                (only valid for processors types that support this statistic).
+              applications:
+                -
+                  name: CPU
+            -
+              name: 'Average Usage of User Process over 1min per Core #{#CPU_ID}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.9.{#CPU_ID}'
+              key: 'fgProcessorUserUsage.[{#CPU_ID}]'
+              units: '%'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorUserUsage
+                
+                The processor's CPU user space usage, which is an average 
+                calculated over the last minute.
+                (only valid for processors types that support this statistic).
+              applications:
+                -
+                  name: CPU
+          graph_prototypes:
+            -
+              name: 'Average Usage over 1m and 5s per Core - Core #{#CPU_ID}'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgProcessorUsage.[{#CPU_ID}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgProcessorUsage5sec.[{#CPU_ID}]'
+            -
+              name: 'CPU usage per core - Core #{#CPU_ID}'
+              type: STACKED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgProcessorSysUsage.[{#CPU_ID}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgProcessorUserUsage.[{#CPU_ID}]'
+        -
+          name: 'SoC3 Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#CPU_ID},1.3.6.1.4.1.12356.101.4.4.2.1.1,{#CPU_TYPE},1.3.6.1.4.1.12356.101.4.4.2.1.4]'
+          key: fgProcessorEntIndex.NP6LITE.discovery
+          delay: 1h
+          filter:
+            conditions:
+              -
+                macro: '{#CPU_TYPE}'
+                value: 12356.101.4.4.3.9
+                formulaid: A
+          description: |
+            FORTINET-FORTIGATE-MIB::fgProcessorEntIndex
+            
+            A unique identifier within the fgProcessorTable
+          item_prototypes:
+            -
+              name: 'SOC3 Packets Dropped'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.8.{#CPU_ID}'
+              key: 'fgProcessorPktDroppedCount.[{#CPU_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorPktDroppedCount
+                
+                The total number of packets dropped by this processor
+                (only valid for processors types that support this statistic).
+              application_prototypes:
+                -
+                  name: SoC3
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'SOC3 Packets Received'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.6.{#CPU_ID}'
+              key: 'fgProcessorPktRxCount.[{#CPU_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorPktRxCount
+                
+                The total number of packets received by this processor
+                (only valid for processors types that support this statistic).
+              application_prototypes:
+                -
+                  name: SoC3
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'SOC3 Packets Transmitted'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.4.2.1.7.{#CPU_ID}'
+              key: 'fgProcessorPktTxCount.[{#CPU_ID}]'
+              description: |
+                FORTINET-FORTIGATE-MIB::fgProcessorPktTxCount
+                
+                The total number of packets transmitted by this processor
+                (only valid for processors types that support this statistic).
+              application_prototypes:
+                -
+                  name: SoC3
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+          graph_prototypes:
+            -
+              name: 'SoC3 Packet Flow - {#CPU_ID}'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgProcessorPktDroppedCount.[{#CPU_ID}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgProcessorPktRxCount.[{#CPU_ID}]'
+                -
+                  sortorder: '2'
+                  color: 2774A4
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgProcessorPktTxCount.[{#CPU_ID}]'
+        -
+          name: 'Virtual Domain Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#VDOM_ID},1.3.6.1.4.1.12356.101.3.2.1.1.1]'
+          key: fgVdEntIndex.discovery
+          delay: 1h
+          lifetime: '0'
+          description: |
+            FORTINET-FORTIGATE-MIB::fgVdEntIndex
+            
+            Internal virtual domain index used to uniquely identify rows in this table. This index is also used by other tables referencing a virtual domain.
+          item_prototypes:
+            -
+              name: 'VDOM #{#VDOM_ID} - Name'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.3.2.1.1.2.{#VDOM_ID}'
+              key: 'fgVdEntName.[{#VDOM_ID}]'
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVdEntName
+                
+                The name of the virtual domain
+              application_prototypes:
+                -
+                  name: 'Virtual Domain'
+        -
+          name: 'SD-WAN Health Check Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#HC_ID},1.3.6.1.4.1.12356.101.4.9.2.1.1,{#HC_NAME},1.3.6.1.4.1.12356.101.4.9.2.1.2,{#MEMBER_SEQ},1.3.6.1.4.1.12356.101.4.9.2.1.3,{#VDOM},1.3.6.1.4.1.12356.101.4.9.2.1.10]'
+          key: fgVWLHealthCheckLink.discovery
+          delay: 1h
+          lifetime: '0'
+          item_prototypes:
+            -
+              name: 'Available Bidirectional Bandwidth of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.13.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkBandwidthBi.[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              units: B
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkBandwidthBi
+                
+                The available bandwidth in Mbps of bi-direction traffic detected by a health-check on a specific member link.
+              application_prototypes:
+                -
+                  name: SD-WAN
+            -
+              name: 'Available Incoming Bandwidth of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.11.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkBandwidthIn.[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              units: B
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkBandwidthIn
+                
+                The available bandwidth in Mbps of incoming traffic detected by a health-check on a specific member link.
+              application_prototypes:
+                -
+                  name: SD-WAN
+            -
+              name: 'Available Outgoing Bandwidth of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.12.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkBandwidthOut.[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              units: B
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkBandwidthOut
+                
+                The available bandwidth in Mbps of outgoing traffic detected by a health-check on a specific member link.
+              application_prototypes:
+                -
+                  name: SD-WAN
+            -
+              name: 'Jitter to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.6.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkJitter[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              units: ms
+              application_prototypes:
+                -
+                  name: SD-WAN
+            -
+              name: 'Latency to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.5.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkLatency[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              units: ms
+              application_prototypes:
+                -
+                  name: SD-WAN
+            -
+              name: 'Packet Loss to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.9.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkPacketLoss[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              units: '%'
+              application_prototypes:
+                -
+                  name: SD-WAN
+            -
+              name: 'Packets received from {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.8.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkPacketRecv[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkPacketRecv
+                
+                The total number of packets received by a health check on a specific member link.
+              application_prototypes:
+                -
+                  name: SD-WAN
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'Packets sent to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.7.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkPacketSend[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              value_type: FLOAT
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkPacketSend
+                
+                The total number of packets sent by a health check on a specific member link.
+              application_prototypes:
+                -
+                  name: SD-WAN
+              preprocessing:
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'Health Check State to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.4.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkState[{#HC_ID}]'
+              delay: 30s
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkState
+                
+                Heatlth check state on a specific member link.
+              application_prototypes:
+                -
+                  name: SD-WAN
+              valuemap:
+                name: 'Alarm state'
+              trigger_prototypes:
+                -
+                  expression: '{last()}=1'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: '{last()}=0'
+                  name: 'Health Check State Failed to {#HC_NAME} on member {#MEMBER_SEQ}'
+                  opdata: 'Status: {ITEM.LASTVALUE1}'
+                  priority: HIGH
+                  manual_close: 'YES'
+            -
+              name: 'VDOM of Performance SLA {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.4.9.2.1.10.{#HC_ID}'
+              key: 'fgVWLHealthCheckLinkVdom.[{#HC_NAME}.{#MEMBER_SEQ}]'
+              delay: 30s
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgVWLHealthCheckLinkVdom
+                
+                Virtual domain the link monitor entry exists in. This name corresponds to the fgVdEntName used in fgVdTable.
+              application_prototypes:
+                -
+                  name: SD-WAN
+          graph_prototypes:
+            -
+              name: 'Performance SLA Metrics to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgVWLHealthCheckLinkJitter[{#HC_NAME}.{#MEMBER_SEQ}]'
+                -
+                  sortorder: '1'
+                  color: 2774A4
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgVWLHealthCheckLinkLatency[{#HC_NAME}.{#MEMBER_SEQ}]'
+                -
+                  sortorder: '2'
+                  color: F7941D
+                  yaxisside: RIGHT
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgVWLHealthCheckLinkPacketLoss[{#HC_NAME}.{#MEMBER_SEQ}]'
+            -
+              name: 'Probe Packets to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 199C0D
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgVWLHealthCheckLinkPacketRecv[{#HC_NAME}.{#MEMBER_SEQ}]'
+                -
+                  sortorder: '1'
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgVWLHealthCheckLinkPacketSend[{#HC_NAME}.{#MEMBER_SEQ}]'
+        -
+          name: 'Wireless Discovery'
+          type: SNMP_AGENT
+          snmp_oid: 'discovery[{#SNMPVALUE},.1.3.6.1.4.1.12356.101.14.4.3.1.1]'
+          key: fgWcWtpConfigWtpId.discovery
+          delay: 1h
+          lifetime: '0'
+          description: |
+            FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpId
+            
+            Represents the unique identifier of a WTP.
+          item_prototypes:
+            -
+              name: 'FortiAP {#SNMPVALUE} - Background Scan'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.12.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigRadioApScan.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioApScan
+                
+                Whether background scan is enabled on this WTP.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'FORTINET-CORE-MIB::FnBoolState'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Radio Tx Automatic Power Control'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.7.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigRadioAutoTxPowerControl.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioAutoTxPowerControl
+                
+                Whether radio automatic TX power control is enabled on this WTP.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'FORTINET-CORE-MIB::FnBoolState'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Radio Tx Automatic Power Control (High Limit)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.9.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigRadioAutoTxPowerHigh.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioAutoTxPowerHigh
+                
+                Represents the high limit of radio automatic TX power control configured for this WTP, in dBm.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Radio Tx Automatic Power Control (Low Limit)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.8.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigRadioAutoTxPowerLow.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioAutoTxPowerLow
+                
+                Represents the low limit of radio automatic TX power control configured for this WTP, in dBm.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Radio Band'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.11.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigRadioBand.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioBand
+                
+                Represents the radio band configured for this WTP.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'FORTINET-FORTIGATE-MIB::FgWcWtpRadioBandType'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Radio Enabled'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.6.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigRadioEnable.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioEnable
+                
+                Whether radio is enabled for this WTP.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'FORTINET-CORE-MIB::FnBoolState'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Radio Tx Power Level'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.10.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigRadioTxPowerLevel.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigRadioTxPowerLevel
+                
+                Represents the radio TX power setting configured for this WTP, in percentage.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - VAPs (All)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.13.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigVapAll.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigVapAll
+                
+                Whether all VAPs are selected for this WTP.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'FORTINET-CORE-MIB::FnBoolState'
+            -
+              name: 'FortiAP {#SNMPVALUE} - VAPs (List)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.14.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigVaps.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigVaps
+                
+                Represents a list of VAPs configured for this WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Administrative Status'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.2.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigWtpAdmin.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpAdmin
+                
+                Represents the administrative status of this WTP.
+                
+                discovered(1) - This WTP was discovered though discovery or join request messages.
+                disable(2) - Controller is configured to not provide service to this WTP.
+                enable(3) - Controller is configured to provide service to this WTP.
+                other(0) - The administration state of the WTP is unknown.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpAdmin'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Serial Number'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.1.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigWtpId.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpId
+                
+                Represents the unique identifier of a WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Location'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.4.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigWtpLocation.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpLocation
+                
+                Represents the location of this WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Name'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.3.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigWtpName[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpName
+                
+                Represents the name configured for this WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Profile'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.3.1.5.{#SNMPINDEX}'
+              key: 'fgWcWtpConfigWtpProfile.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpProfile
+                
+                Represents the WTP profile configured for this WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Status'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.7.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionConnectionState[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionConnectionState
+                
+                Represents the connection state of a WTP to AC.
+                
+                The following enumerated values are supported:
+                
+                offLine(1) - The WTP is not connected.
+                onLine(2) - The WTP is connected.
+                downloadingImage(3) - The WTP is downloading software image from the AC on joining.
+                connectedImage(4) - The AC is pushing software image to the connected WTP.
+                other(0) - The WTP connection state is unknown.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'FORTINET-FORTIGATE-MIB::fgWcWtpSessionConnectionState'
+              trigger_prototypes:
+                -
+                  expression: '{last()}=1'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: '{last()}=2'
+                  name: 'FortiAP {#SNMPVALUE} in {HOST.NAME} is DOWN'
+                  opdata: 'Status: {ITEM.LASTVALUE1}'
+                  priority: HIGH
+                -
+                  expression: '{last()}=3'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: '{last()}=2'
+                  name: 'FortiAP {#SNMPVALUE} is receiving firmware update from {HOST.NAME}'
+                  opdata: 'Status: {ITEM.LASTVALUE1}'
+                  priority: INFO
+                -
+                  expression: '{last()}=4'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: '{last()}=2'
+                  name: '{HOST.NAME} is sending firmware to FortiAP {#SNMPVALUE}'
+                  opdata: 'Status: {ITEM.LASTVALUE1}'
+                  priority: INFO
+            -
+              name: 'FortiAP {#SNMPVALUE} - Base MAC Address'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.6.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpBaseMacAddress.[{#SNMPVALUE}]'
+              delay: 1h
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpBaseMacAddress
+                
+                Represents the WTP's Base MAC Address, which MAY be assigned to the primary
+                Ethernet interface.
+                The instance of the object corresponds to the Base MAC Address sub-element
+                in the CAPWAP protocol [RFC5415].
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Version (Bootloader)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.15.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpBootVersion.[{#SNMPVALUE}]'
+              delay: 1h
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpBootVersion
+                
+                Represents the boot loader version of a WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Byte Count Rate (Rx)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.18.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpByteRxCount.rate.[{#SNMPVALUE}]'
+              history: 7d
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpByteRxCount
+                
+                Represents the number of bytes received by this WTP.
+              applications:
+                -
+                  name: Wireless
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '8'
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'FortiAP {#SNMPVALUE} - Byte Count Rate (Tx)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.19.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpByteTxCount.rate.[{#SNMPVALUE}]'
+              history: 7d
+              units: bps
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpByteTxCount
+                
+                Represents the number of bytes transmitted by this WTP.
+              applications:
+                -
+                  name: Wireless
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '8'
+                -
+                  type: CHANGE_PER_SECOND
+                  parameters:
+                    - ''
+            -
+              name: 'FortiAP {#SNMPVALUE} - CPU Usage'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.20.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpCpuUsage.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpCpuUsage
+                
+                Represents the current CPU usage of a WTP (percentage).
+              applications:
+                -
+                  name: Wireless
+              trigger_prototypes:
+                -
+                  expression: '{min(5m)}>{$CPU.UTIL.CRIT}'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: '{max(5m)}<{$CPU.UTIL.CRIT}'
+                  name: 'High CPU usage (over {$CPU.UTIL.CRIT}% for 5m) - FortiAP {#SNMPVALUE}'
+                  opdata: 'Current utilization: {ITEM.LASTVALUE1}'
+                  priority: WARNING
+                  description: 'CPU utilization is too high. The system might be slow to respond.'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Uptime (Daemon)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.9.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpDaemonUpTime.[{#SNMPVALUE}]'
+              history: 7d
+              units: uptime
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpDaemonUpTime
+                
+                Represents the time (in hundredths of a second) since the WTP daemon has been started.
+              applications:
+                -
+                  name: Wireless
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '0.01'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Version (Hardware)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.13.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpHwVersion.[{#SNMPVALUE}]'
+              delay: 1h
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpHwVersion
+                
+                Represents the hardware version of a WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - IP Address'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.3.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpIpAddress.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpIpAddress
+                
+                Represents the IP address of a WTP that corresponds to the IP address in the IP packet header.
+                
+                The format of this IP address is determined by the corresponding instance of object gWcWtpWtpIpAddressType.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - IP Address Type'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.2.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpIpAddressType.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpIpAddressType
+                
+                Represents the IP address type of a WTP.
+                Only ipv4(1) and ipv6(2) are supported by the object.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'IF-MIB::InetAddressType'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Local IP Address'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.5.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpLocalIpAddress.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpLocalIpAddress
+                
+                Represents the local IP address of a WTP and models the CAPWAP Local IPv4 Address
+                or CAPWAP Local IPv6 Address fields [RFC5415].
+                If a Network Address Translation (NAT) device is present between WTP and AC, the value of
+                fgWcWtpWtpLocalIpAddress will be different from the value of fgWcWtpWtpIpAddress.
+                The format of this IP address is determined by the corresponding instance of object
+                fgWcWtpSessionWtpLocalIpAddressType.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Local IP Address Type'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.4.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpLocalIpAddressType.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpLocalIpAddressType
+                
+                Represents the local IP address type of a WTP.
+                Only ipv4(1) and ipv6(2) are supported by the object.
+              applications:
+                -
+                  name: Wireless
+              valuemap:
+                name: 'IF-MIB::InetAddressType'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Memory Capacity'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.22.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpMemoryCapacity.[{#SNMPVALUE}]'
+              delay: 1h
+              history: 7d
+              units: B
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpMemoryCapacity
+                
+                Represents the total physical memory (RAM) installed (KB).
+              applications:
+                -
+                  name: Wireless
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '1024'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Memory Usage'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.21.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpMemoryUsage.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpCpuUsage
+                
+                Represents the current memory usage of a WTP (percentage).
+              applications:
+                -
+                  name: Wireless
+              trigger_prototypes:
+                -
+                  expression: '{min(5m)}>{$MEMORY.UTIL.MAX}'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: '{max(5m)}<{$MEMORY.UTIL.MAX}'
+                  name: 'High memory usage (over {$MEMORY.UTIL.MAX}% for 5m) - FortiAP {#SNMPVALUE}'
+                  opdata: 'Current utilization: {ITEM.LASTVALUE1}'
+                  priority: WARNING
+                  description: 'The system is running out of free memory.'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Model Number'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.12.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpModelNumber.[{#SNMPVALUE}]'
+              delay: 1h
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpModelNumber
+                
+                Represents the model number of a WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Profile Name'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.11.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpProfileName.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpProfileName
+                
+                Represents the profile configured for this WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Region Code'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.16.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpRegionCode.[{#SNMPVALUE}]'
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpRegionCode
+                
+                Represents the region code programmed for this WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Uptime (Session)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.10.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpSessionUpTime.[{#SNMPVALUE}]'
+              history: 7d
+              units: uptime
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpSessionUpTime
+                
+                Represents the time (in hundredths of a second) since the WTP connects to the AC.
+              applications:
+                -
+                  name: Wireless
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '0.01'
+              trigger_prototypes:
+                -
+                  expression: '{change()}<0'
+                  name: 'FortiAP {#SNMPVALUE} session with {HOST.NAME} has been restarted'
+                  opdata: 'Status: {ITEM.LASTVALUE1}'
+                  priority: WARNING
+                  description: 'Session between FAP and FG was restarted. Ack to close.'
+                  manual_close: 'YES'
+            -
+              name: 'FortiAP {#SNMPVALUE} - Connected Clients'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.17.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpStationCount.[{#SNMPVALUE}]'
+              history: 7d
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpStationCount
+                
+                Represents the number of clients currently connected to this WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Version (Software)'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.14.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpSwVersion.[{#SNMPVALUE}]'
+              delay: 1h
+              history: 7d
+              trends: '0'
+              value_type: CHAR
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpSwVersion
+                
+                Represents the software version of a WTP.
+              applications:
+                -
+                  name: Wireless
+            -
+              name: 'FortiAP {#SNMPVALUE} - Uptime'
+              type: SNMP_AGENT
+              snmp_oid: '1.3.6.1.4.1.12356.101.14.4.4.1.8.{#SNMPINDEX}'
+              key: 'fgWcWtpSessionWtpUpTime.[{#SNMPVALUE}]'
+              history: 7d
+              units: uptime
+              description: |
+                FORTINET-FORTIGATE-MIB::fgWcWtpSessionWtpUpTime
+                
+                Represents the time (in hundredths of a second) since the WTP boots.
+              applications:
+                -
+                  name: Wireless
+              preprocessing:
+                -
+                  type: MULTIPLIER
+                  parameters:
+                    - '0.01'
+          graph_prototypes:
+            -
+              name: 'Wireless - FortiAP {#SNMPVALUE} Byte Count Rate (Tx/Rx)'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 2774A4
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgWcWtpSessionWtpByteRxCount.rate.[{#SNMPVALUE}]'
+                -
+                  sortorder: '1'
+                  color: A54F10
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgWcWtpSessionWtpByteTxCount.rate.[{#SNMPVALUE}]'
+            -
+              name: 'Wireless - FortiAP {#SNMPVALUE} Clients'
+              ymin_type_1: FIXED
+              graph_items:
+                -
+                  color: 1A7C11
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgWcWtpSessionWtpStationCount.[{#SNMPVALUE}]'
+            -
+              name: 'Wireless - FortiAP {#SNMPVALUE} Health'
+              ymin_type_1: FIXED
+              ymax_type_1: FIXED
+              graph_items:
+                -
+                  color: F63100
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgWcWtpSessionWtpCpuUsage.[{#SNMPVALUE}]'
+                -
+                  sortorder: '1'
+                  color: 2774A4
+                  item:
+                    host: 'Template Net Fortinet FortiGate SNMP'
+                    key: 'fgWcWtpSessionWtpMemoryUsage.[{#SNMPVALUE}]'
+      macros:
+        -
+          macro: '{$CPU.UTIL.CRIT}'
+          value: '80'
+        -
+          macro: '{$IF_ID1}'
+          value: '1'
+          description: 'IF ID where Egress Shaping is configured'
+        -
+          macro: '{$IF_IN_ID1}'
+          value: '2'
+          description: 'IF ID where Ingress Shaping is configured'
+        -
+          macro: '{$MEMORY.UTIL.MAX}'
+          value: '80'
+      dashboards:
+        -
+          name: 'HA Statistics'
+          widgets:
+            -
+              type: GRAPH_PROTOTYPE
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Concurrent Connections'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '5'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - CPU Usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '10'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Memory Usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '15'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Network Bandwidth Usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '20'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Security Events Rate'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+        -
+          name: 'High Availability'
+          widgets:
+            -
+              type: GRAPH_PROTOTYPE
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Concurrent Connections'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '5'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - CPU Usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '10'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Memory Usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '15'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Network Bandwidth Usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_PROTOTYPE
+              'y': '20'
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'HA Cluster Member {#HA_ID} - Security Events Rate'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+        -
+          name: 'SD-WAN Performance SLA'
+          widgets:
+            -
+              type: GRAPH_PROTOTYPE
+              width: '24'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: columns
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: rows
+                  value: '1'
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '2'
+                -
+                  type: GRAPH_PROTOTYPE
+                  name: graphid
+                  value:
+                    name: 'Performance SLA Metrics to {#HC_NAME} on SD-WAN member {#MEMBER_SEQ}'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+        -
+          name: 'System Performance'
+          widgets:
+            -
+              type: GRAPH_CLASSIC
+              width: '12'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '0'
+                -
+                  type: GRAPH
+                  name: graphid
+                  value:
+                    name: 'CPU usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_CLASSIC
+              x: '12'
+              width: '12'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '0'
+                -
+                  type: GRAPH
+                  name: graphid
+                  value:
+                    name: 'Memory usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_CLASSIC
+              'y': '5'
+              width: '12'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '0'
+                -
+                  type: GRAPH
+                  name: graphid
+                  value:
+                    name: 'Hard Disk Usage'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+            -
+              type: GRAPH_CLASSIC
+              x: '12'
+              'y': '5'
+              width: '12'
+              height: '5'
+              fields:
+                -
+                  type: INTEGER
+                  name: source_type
+                  value: '0'
+                -
+                  type: GRAPH
+                  name: graphid
+                  value:
+                    name: 'ICMP response time'
+                    host: 'Template Net Fortinet FortiGate SNMP'
+  graphs:
+    -
+      name: 'Active VPN tunnels (IPsec and SSL)'
+      graph_items:
+        -
+          color: 199C0D
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgVpnTunnelUpCount
+        -
+          sortorder: '1'
+          color: 0080FF
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgVpnSslStatsLoginUsers
+    -
+      name: 'CPU usage'
+      ymin_type_1: FIXED
+      ymax_type_1: FIXED
+      graph_items:
+        -
+          drawtype: GRADIENT_LINE
+          color: 1A7C11
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgSysCpuUsage
+    -
+      name: 'Hard Disk Usage'
+      ymin_type_1: FIXED
+      graph_items:
+        -
+          drawtype: DASHED_LINE
+          color: F63100
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgSysDiskCapacity
+        -
+          sortorder: '1'
+          color: FF8000
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgSysDiskUsage
+    -
+      name: 'ICMP response time'
+      ymin_type_1: FIXED
+      graph_items:
+        -
+          color: 2774A4
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: icmppingsec
+    -
+      name: 'IPS Metrics'
+      ymin_type_1: FIXED
+      graph_items:
+        -
+          color: F63100
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsIntrusionsDetected
+        -
+          sortorder: '1'
+          color: 199C0D
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsIntrusionsBlocked
+        -
+          sortorder: '2'
+          color: F7941D
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsCritSevDetections
+        -
+          sortorder: '3'
+          color: FC6EA3
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsHighSevDetections
+        -
+          sortorder: '4'
+          color: BA2A5D
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsMedSevDetections
+        -
+          sortorder: '5'
+          color: C7A72D
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsLowSevDetections
+        -
+          sortorder: '6'
+          color: 6C59DC
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsInfoSevDetections
+        -
+          sortorder: '7'
+          color: 2774A4
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsAnomalyDetections
+        -
+          sortorder: '8'
+          color: F230E0
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgIpsSignatureDetections
+    -
+      name: 'IPv4 Concurrent Connections'
+      ymin_type_1: FIXED
+      graph_items:
+        -
+          color: 199C0D
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgSysSesCount
+    -
+      name: 'Memory usage'
+      ymin_type_1: FIXED
+      ymax_type_1: FIXED
+      graph_items:
+        -
+          color: 1A7C11
+          item:
+            host: 'Template Net Fortinet FortiGate SNMP'
+            key: fgSysMemUsage
+  value_maps:
+    -
+      name: 'Alarm state'
+      mappings:
+        -
+          value: '0'
+          newvalue: Ok
+        -
+          value: '1'
+          newvalue: Alarm
+    -
+      name: 'FORTINET-CORE-MIB::FnBoolState'
+      mappings:
+        -
+          value: '1'
+          newvalue: disabled
+        -
+          value: '2'
+          newvalue: enabled
+    -
+      name: 'FORTINET-FORTIGATE-MIB::FgHaLBSchedule'
+      mappings:
+        -
+          value: '1'
+          newvalue: none
+        -
+          value: '2'
+          newvalue: hub
+        -
+          value: '3'
+          newvalue: leastConnections
+        -
+          value: '4'
+          newvalue: roundRobin
+        -
+          value: '5'
+          newvalue: weightedRoundRobin
+        -
+          value: '6'
+          newvalue: random
+        -
+          value: '7'
+          newvalue: ipBased
+        -
+          value: '8'
+          newvalue: ipPortBased
+    -
+      name: 'FORTINET-FORTIGATE-MIB::FgHaMode'
+      mappings:
+        -
+          value: '1'
+          newvalue: standalone
+        -
+          value: '2'
+          newvalue: activeActive
+        -
+          value: '3'
+          newvalue: activePassive
+    -
+      name: 'FORTINET-FORTIGATE-MIB::FgHaStatsSyncStatusType'
+      mappings:
+        -
+          value: '0'
+          newvalue: unsynchronized
+        -
+          value: '1'
+          newvalue: synchronized
+    -
+      name: 'FORTINET-FORTIGATE-MIB::fgWcWtpConfigWtpAdmin'
+      mappings:
+        -
+          value: '0'
+          newvalue: other
+        -
+          value: '1'
+          newvalue: discovered
+        -
+          value: '2'
+          newvalue: disable
+        -
+          value: '3'
+          newvalue: enable
+    -
+      name: 'FORTINET-FORTIGATE-MIB::FgWcWtpRadioBandType'
+      mappings:
+        -
+          value: '0'
+          newvalue: other
+        -
+          value: '1'
+          newvalue: band2GHz
+        -
+          value: '2'
+          newvalue: band5GHz
+    -
+      name: 'FORTINET-FORTIGATE-MIB::fgWcWtpSessionConnectionState'
+      mappings:
+        -
+          value: '0'
+          newvalue: other
+        -
+          value: '1'
+          newvalue: offline
+        -
+          value: '2'
+          newvalue: online
+        -
+          value: '3'
+          newvalue: 'downloading Image'
+        -
+          value: '4'
+          newvalue: 'connected Image'
+    -
+      name: 'IF-MIB::InetAddressType'
+      mappings:
+        -
+          value: '1'
+          newvalue: ipv4
+        -
+          value: '2'
+          newvalue: ipv6

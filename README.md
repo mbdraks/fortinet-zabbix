@@ -6,10 +6,10 @@ This template goal is to contain all available SNMP information provided
 by a Fortinet FortiGate device.
 
 ### Template Version
-- v1.5
+- v2.0
 
 ### Validated Versions
-- Zabbix 4.4
+- Zabbix 5.2
 - FortiOS 6.2 / 6.4
 
 ### Setup
@@ -221,6 +221,10 @@ Each items will almost always generate some automatic graphs, here's some sample
 
 ## Known Issues
 No support for VDOMs at this time
+
+## Compatibility
+Zabbix 5.2 - Template v2.0+
+[Zabbix 4.4 - Template v1.5](https://github.com/mbdraks/fortinet-zabbix/releases/tag/v1.5.0)
 
 ## References
 - [Zabbix template guidelines](https://www.zabbix.com/documentation/guidelines/thosts)
