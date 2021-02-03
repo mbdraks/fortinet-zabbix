@@ -223,8 +223,8 @@ Each items will almost always generate some automatic graphs, here's some sample
 No support for VDOMs at this time
 
 ## Compatibility
-Zabbix 5.2 - Template v2.0+
-[Zabbix 4.4 - Template v1.5](https://github.com/mbdraks/fortinet-zabbix/releases/tag/v1.5.0)
+- Zabbix 5.2 - Template v2.0+
+- [Zabbix 4.4 - Template v1.5](https://github.com/mbdraks/fortinet-zabbix/releases/tag/v1.5.0)
 
 ## References
 - [Zabbix template guidelines](https://www.zabbix.com/documentation/guidelines/thosts)
