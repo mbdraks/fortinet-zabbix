@@ -1,9 +1,3 @@
-# Add ssh key
-resource "aws_key_pair" "ssh-key" {
-  key_name   = var.ec2_key_name
-  public_key = file(var.ec2_key_filename)
-}
-
 # Create Security Group - ZabbixServer
 resource "aws_security_group" "zabbix-server" {
   vpc_id      = aws_vpc.vpc.id
@@ -53,7 +47,7 @@ resource "aws_instance" "instance-zabbix-server" {
   ami                         = var.ec2_image_id
   vpc_security_group_ids      = [aws_security_group.zabbix-server.id]
   subnet_id                   = aws_subnet.public-subnet-1.id
-  key_name                    = aws_key_pair.ssh-key.key_name
+  key_name                    = var.ec2_key_name
   associate_public_ip_address = true
   user_data                   = file("user-data.sh")
 
@@ -64,9 +58,13 @@ resource "aws_instance" "instance-zabbix-server" {
 }
 # Create EIP for EC2 Instance ZabbixServer
 resource "aws_eip" "eip-instance-zabbix-server" {
-  # count = 1
+
   instance = aws_instance.instance-zabbix-server.id
   vpc      = true
+
+  tags = {
+    Name = "Zabbix-Server"
+  }
 }
 
 # Output
@@ -76,6 +74,10 @@ output "zabbixserver-eip" {
 
 output "User" {
   value = "Admin"
+}
+
+output "SSH-User" {
+  value = "ubuntu"
 }
 
 output "Password" {
