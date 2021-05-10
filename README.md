@@ -6,11 +6,11 @@ This template goal is to contain all available SNMP information provided
 by a Fortinet FortiGate device.
 
 ### Template Version
-- v2.0
+- v2.1.0
 
 ### Validated Versions
 - Zabbix 5.2
-- FortiOS 6.2 / 6.4
+- FortiOS 6.2 / 6.4 / 7.0
 
 ### Setup
 - Download the template
@@ -27,10 +27,15 @@ You can tune the following macros, which are used by some triggers:
 - {$IF_ID1} = 1; IF ID where Egress Shaping is configured
 - {$IF_IN_ID1} = 2; IF ID where Ingress Shaping is configured
 
-### Template Links
-- Template Module EtherLike-MIB SNMPv2
-- Template Module Generic SNMPv2
-- Template Module Interfaces SNMPv2
+### Templates Included
+The following templates were included into this one (instead of linked)
+due to several users having issues during import process when the default
+templates are not present on their Zabbix install. All data and discovery
+was simply copied from them into this template.
+
+- Template Module EtherLike-MIB
+- Template Module Generic
+- Template Module Interfaces
 
 ### Discovery Rules
 - CPU Cores
@@ -43,6 +48,10 @@ You can tune the following macros, which are used by some triggers:
 - Virtual Domain
 
 ### Items Collected
+- General
+    - System contact details, System description
+    - System location, System name, System object ID
+
 - Network Interfaces
     - Bits received/sent, discards, errors
     - Type, operational status, speed
@@ -70,9 +79,11 @@ You can tune the following macros, which are used by some triggers:
 - Session
     - IPv4 Active sessions
 
-- ICMP
-    - Loss
-    - Response Time
+- Status
+    - ICMP Loss
+    - ICMP Response Time
+    - Uptime
+    - SNMP data collection availability
 
 - VPN
     - Active IPsec VPN tunnels
@@ -94,6 +105,10 @@ You can tune the following macros, which are used by some triggers:
     - Session Count, Packet and Bytes Processed per member
     - AV and IPS event rate per member
     - Hostname, Sync Status, Sync Time (Success and Failure)
+
+- Hardware Sensor
+    - Hardware Sensor Alarm Count
+    - Hardware Sensor Alarm Name and State
 
 - IPS (Intrusion Prevention System)
     - Intrusions detected and blocked
@@ -117,6 +132,15 @@ You can tune the following macros, which are used by some triggers:
 
 - Virtual Domain
     - VDOM Name
+    - VDOM Count, VDOM Max Count
+    - VDOM Operation Mode
+    - CPU usage per VDOM
+    - Memory usage per VDOM
+    - HA Member state per VDOM
+    - Active Sessions per VDOM
+    - Session Rate per VDOM
+
+
 
 ### Triggers
 - CPU
