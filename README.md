@@ -9,7 +9,7 @@ by a Fortinet FortiGate device.
 - v2.1.0
 
 ### Validated Versions
-- Zabbix 5.2
+- Zabbix 5.2 / 5.4 / 6.0
 - FortiOS 6.2 / 6.4 / 7.0
 
 ### Setup
