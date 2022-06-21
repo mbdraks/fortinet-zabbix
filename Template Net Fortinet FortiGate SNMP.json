@@ -2332,6 +2332,32 @@
                             }
                         ]
                     },
+                    {	
+                        "uuid": "2be041d47e4a49f797df925e8616538e",	
+                        "name": "VPN Phase 2",	
+                        "type": "SNMP_AGENT",	
+                        "snmp_oid": "discovery[{#SNMPVALUE},.1.3.6.1.4.1.12356.101.12.2.2.1.3]",	
+                        "key": "fgVpnTunEntPhase2Name",	
+                        "item_prototypes": [	
+                            {	
+                                "uuid": "c0764c0381e54a1c93c6bd39c87b96d0",	
+                                "name": "{#SNMPVALUE}: Tunnel Status",	
+                                "type": "SNMP_AGENT",	
+                                "snmp_oid": "1.3.6.1.4.1.12356.101.12.2.2.1.20.{#SNMPINDEX}",	
+                                "key": "fgVpnTunEntStatus[{#SNMPVALUE}]",	
+                                "trigger_prototypes": [	
+                                    {	
+                                        "uuid": "0dcfd00939f44994a288cafc8a9d6a52",	
+                                        "expression": "last(/Template Net Fortinet FortiGate SNMP/fgVpnTunEntStatus[{#SNMPVALUE}],#1)=1",	
+                                        "name": "VPN Tunnel Down [{#SNMPVALUE}]",	
+                                        "priority": "HIGH",	
+                                        "description": "IPsec VPN Tunnel Phase 2 is down, please check!",	
+                                        "manual_close": "YES"	
+                                    }	
+                                ]	
+                            }	
+                        ]	
+                    },
                     {
                         "uuid": "7ab252fa67e0403b9ce0944ce80f1bd9",
                         "name": "SD-WAN Health Check Discovery",
